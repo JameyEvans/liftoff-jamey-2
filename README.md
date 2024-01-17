@@ -1,5 +1,5 @@
 # liftoff-jamey-2
-Project for LaunchCode's Liftoff Program
+Project for LaunchCode's Liftoff Program 
 
 Project Title
 Blood Bank Management System
@@ -13,3 +13,4 @@ Credits
 Lydia - lydiaqd
 Emma - Purpleater
 Suman - DrSuman1
+
