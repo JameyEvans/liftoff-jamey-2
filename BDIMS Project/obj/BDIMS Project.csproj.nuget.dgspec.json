@@ -1,27 +1,29 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\emmak\\Desktop\\Blood Donation Project\\BDIMS Project\\BDIMS Project.csproj": {}
+    "/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/BDIMS Project.csproj": {}
   },
   "projects": {
-    "C:\\Users\\emmak\\Desktop\\Blood Donation Project\\BDIMS Project\\BDIMS Project.csproj": {
+    "/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/BDIMS Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\emmak\\Desktop\\Blood Donation Project\\BDIMS Project\\BDIMS Project.csproj",
+        "projectUniqueName": "/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/BDIMS Project.csproj",
         "projectName": "BDIMS Project",
-        "projectPath": "C:\\Users\\emmak\\Desktop\\Blood Donation Project\\BDIMS Project\\BDIMS Project.csproj",
-        "packagesPath": "C:\\Users\\emmak\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\emmak\\Desktop\\Blood Donation Project\\BDIMS Project\\obj\\",
+        "projectPath": "/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/BDIMS Project.csproj",
+        "packagesPath": "/Users/quinn/.nuget/packages/",
+        "outputPath": "/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/obj/",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\emmak\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/Users/quinn/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "/usr/local/share/dotnet/sdk/7.0.307/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -58,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.307/RuntimeIdentifierGraph.json"
         }
       }
     }
