@@ -119,3 +119,34 @@ C:/Users/emmak/Desktop/Blood Donation Project/BDIMS Project/obj/Debug/net6.0/ref
 /Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/obj/Debug/net6.0/BDIMS Project.pdb
 /Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/obj/Debug/net6.0/BDIMS Project.genruntimeconfig.cache
 /Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/obj/Debug/net6.0/ref/BDIMS Project.dll
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\appsettings.Development.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\appsettings.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\BDIMS Project.staticwebassets.runtime.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\BDIMS Project.exe
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\BDIMS Project.deps.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\BDIMS Project.runtimeconfig.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\BDIMS Project.dll
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\bin\Debug\net6.0\BDIMS Project.pdb
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.csproj.AssemblyReference.cache
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.AssemblyInfoInputs.cache
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.AssemblyInfo.cs
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.csproj.CoreCompileInputs.cache
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.RazorAssemblyInfo.cache
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.RazorAssemblyInfo.cs
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets\msbuild.BDIMS Project.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets\msbuild.build.BDIMS Project.props
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets\msbuild.buildMultiTargeting.BDIMS Project.props
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets\msbuild.buildTransitive.BDIMS Project.props
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets.pack.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets.build.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\staticwebassets.development.json
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\scopedcss\bundle\BDIMS Project.styles.css
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\scopedcss\projectbundle\BDIMS Project.bundle.scp.css
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.dll
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\refint\BDIMS Project.dll
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.pdb
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\BDIMS Project.genruntimeconfig.cache
+C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\obj\Debug\net6.0\ref\BDIMS Project.dll
