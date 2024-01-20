@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using BDIMS_Project.Models;
 
 namespace BDIMS_Project.Controllers
 {
@@ -8,7 +9,8 @@ namespace BDIMS_Project.Controllers
         // GET: UserController
         public ActionResult Register()
         {
-            return Register();
+            RegisterModel modelRegister = new RegisterModel();
+            return View(modelRegister);
         }
 
         // GET: UserController/Details/5
