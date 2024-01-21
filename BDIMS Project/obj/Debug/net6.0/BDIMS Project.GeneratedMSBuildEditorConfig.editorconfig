@@ -9,45 +9,49 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BDIMS_Project
 build_property.RootNamespace = BDIMS_Project
-build_property.ProjectDir = /Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/
+build_property.ProjectDir = C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = /Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project
+build_property.MSBuildProjectDirectory = C:\Users\drsum\OneDrive\Desktop\csharp-practice\liftoff-jamey-2\BDIMS Project
 build_property._RazorSourceGeneratorDebug = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Guest/ContactUs.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3Vlc3QvQ29udGFjdFVzLmNzaHRtbA==
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Guest/ContactUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Vlc3RcQ29udGFjdFVzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Guest/Login.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvR3Vlc3QvTG9naW4uY3NodG1s
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Guest/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcR3Vlc3RcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Home/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Shared/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Shared/_ValidationScriptsPartial.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/_ViewImports.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/User/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/_ViewStart.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/Quinn/Desktop/LaunchCode/LiftOff/liftoff-jamey-2/BDIMS Project/Views/Shared/_Layout.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-6cq4yishtn
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/drsum/OneDrive/Desktop/csharp-practice/liftoff-jamey-2/BDIMS Project/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-tyspu9pmlo
