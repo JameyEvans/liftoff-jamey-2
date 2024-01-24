@@ -1,4 +1,4 @@
-# liftoff-jamey-2
+# Blood Bank Management System
 Project for LaunchCode's Liftoff Program 
 
 Project Title
