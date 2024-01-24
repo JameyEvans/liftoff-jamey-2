@@ -1,0 +1,10 @@
+Donor Database Object 
+
+First Name: VARCHAR(255)
+Last Name: VARCHAR(255)
+Donor ID: INT
+Email: VARCHAR(255)
+Address: VARCHAR(255)
+Phone Number: VARCHAR(255)
+Blood Type: VARCHAR(10)
+Date of Birth: VARCHAR(255)
