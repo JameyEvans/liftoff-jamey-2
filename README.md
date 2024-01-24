@@ -1,16 +1,42 @@
 # Blood Bank Management System
-Project for LaunchCode's Liftoff Program 
 
-Project Title
-Blood Bank Management System
+## Table of Contents
+- [Project Description](#project-description)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributors](#contributors)
+- [License](#license)
 
-Project Description
-An application that allows users to create an account, see if they are elligible to donate blood, and use Google Maps to find blood banks near them. Blood bank staff can use the app to view a database containing all registered users, check blood stock, and a user's history of donations. Additional features include the ability to receive notifications, create appointments, and leave feedback on donation centers. 
+## Project Description
+The Blood Bank Management System is an application developed as part of the LaunchCode Liftoff Program. It aims to provide a platform for users to manage blood donations, find nearby blood banks, and facilitate communication between blood bank staff and donors.
 
-This project was created as part of the LaunchCode program in 2024. 
+## Features
+- User Registration: Users can create an account to access the system.
+- Donor Eligibility Check: Users can check their eligibility to donate blood.
+- Blood Bank Locator: Users can use Google Maps integration to find nearby blood banks.
+- Staff Dashboard: Blood bank staff can view a database of registered users, check blood stock, and view a user's donation history.
+- Notifications: Users can receive notifications about upcoming appointments and blood donation events.
+- Appointments: Users can schedule appointments for blood donations.
+- Feedback: Users can provide feedback on donation centers.
 
-Credits
-Lydia - lydiaqd
-Emma - Purpleater
-Suman - DrSuman1
+## Installation
+1. Clone the repository: `git clone https://github.com/JameyEvans/liftoff-jamey-2`
+2. Navigate to the project directory
+3. ...
+4. Profit
+
+## Usage
+1. Start the application
+2. Open your web browser and go to `http://localhost:3000`
+3. ...
+4. Profit
+
+## Contributors
+- Lydia - [@lydiaqd](https://github.com/lydiaqd)
+- Emma - [@Purpleater](https://github.com/Purpleater)
+- Suman - [@DrSuman1](https://github.com/DrSuman1)
+
+## License
+This project is licensed under the [MIT License](LICENSE).
 
