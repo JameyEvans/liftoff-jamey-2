@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BDIMS Project")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+06d7f22d2d8bd901932b7ae6da4feff0983c0587")]
 [assembly: System.Reflection.AssemblyProductAttribute("BDIMS Project")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BDIMS Project")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
