@@ -1,8 +1,31 @@
+using System.Security.Cryptography;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
+// configure CORS
+var specificOrigins = "AppOrigins";
+
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddCors(options =>
+    {
+        options.AddPolicy(name: specificOrigins,
+            policy =>
+            {
+                policy.WithOrigins("https://localhost:44412")
+                .AllowAnyHeader()
+                .AllowAnyMethod()
+                .AllowCredentials();
+                
+
+            });
+    });
+}
+
 
 var app = builder.Build();
 
@@ -16,6 +39,7 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+app.UseCors(specificOrigins);
 
 
 app.MapControllerRoute(

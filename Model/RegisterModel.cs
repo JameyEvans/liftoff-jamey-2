@@ -35,9 +35,14 @@ namespace BloodBankManagmemntSystem.Model
         [Display(Name = "Password")]
         public string Password { get; set; }
 
+        [Required]
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
         [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public string? Gender { get; set; }
+        public string? City { get; set; }
+        public string? Country { get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BloodBankManagmemntSystem.Model;
+using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -24,11 +25,24 @@ namespace BloodBankManagmemntSystem.Controllers
 
         // POST api/<UserController>
         [HttpPost]
-        public void Register([FromBody] string value)
+        [Route("Register")]
+        public ActionResult Register(InputModel model)
         {
-            //return this.Ok();
+            if (!ModelState.IsValid)
+            {
+                // return error status code
+                return BadRequest(ModelState);
+            }
+            {
+            // return success status code
+                return Ok();
+            }
+
+            
 
         }
+
+
 
         //// PUT api/<UserController>/5
         //[HttpPut("{id}")]
