@@ -1,0 +1,3 @@
+[submodule "BloodBankManagmemntSystem"]
+	path = BloodBankManagmemntSystem
+	url = https://github.com/DrSuman1/BloodBankManagmemntSystem.git
