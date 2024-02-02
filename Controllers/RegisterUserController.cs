@@ -1,5 +1,7 @@
-﻿using BloodBankManagmemntSystem.Model;
+﻿using BloodBankManagmemntSystem.ComponentModel;
+using BloodBankManagmemntSystem.Data;
 using Microsoft.AspNetCore.Mvc;
+
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -9,6 +11,7 @@ namespace BloodBankManagmemntSystem.Controllers
     [Route("[controller]")]
     public class  RegisterUserController : ControllerBase
     {
+       
         // GET: api/<UserController>
         [HttpGet]
         public IEnumerable<string> Get()
@@ -28,9 +31,24 @@ namespace BloodBankManagmemntSystem.Controllers
         [Route("Register")]
         public ActionResult Register(InputModel model)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 // return error status code
+                Models.RegisterModel inputModel = new Models.RegisterModel
+                {
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    Email = model.Email,
+                    Password = model.Password,
+                    ConfirmPassword = model.ConfirmPassword,
+                    Gender = model.Gender,
+                    City = model.City,
+                    Country = model.Country
+                };
+                BloodDbContext context = new BloodDbContext();
+                context.registerModel.Add(inputModel);
+                context.SaveChanges();
+
                 return BadRequest(ModelState);
             }
             {

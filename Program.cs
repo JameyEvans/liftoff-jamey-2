@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -40,6 +41,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
 app.UseCors(specificOrigins);
+app.MapControllers();
 
 
 app.MapControllerRoute(

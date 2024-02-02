@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
 
-namespace BloodBankManagmemntSystem.Model
+namespace BloodBankManagmemntSystem.ComponentModel
 {
     public class RegisterModel
     {
