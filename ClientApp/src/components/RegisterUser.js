@@ -21,7 +21,7 @@ export class RegisterUser extends Component {
         data.append = this.country.value;
 
         var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:33767/registeruser/register', true);
+        xhr.open('POST', 'http://localhost:33767/Donor/Register', true);
         xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
         xhr.onreadystatechange = function () {
             if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {

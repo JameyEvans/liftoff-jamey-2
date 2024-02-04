@@ -1,5 +1,6 @@
 ﻿using BloodBankManagmemntSystem.ComponentModel;
 using BloodBankManagmemntSystem.Data;
+using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -9,8 +10,14 @@ namespace BloodBankManagmemntSystem.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class  RegisterUserController : ControllerBase
+    public class  DonorController : ControllerBase
     {
+        private BloodDbContext context;
+
+        public DonorController(BloodDbContext dbcontext)
+        {
+            context = dbcontext;
+        }
        
         // GET: api/<UserController>
         [HttpGet]
@@ -29,35 +36,30 @@ namespace BloodBankManagmemntSystem.Controllers
         // POST api/<UserController>
         [HttpPost]
         [Route("Register")]
-        public ActionResult Register(InputModel model)
+        public ActionResult Register(Donor model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                // return error status code
-                Models.RegisterModel inputModel = new Models.RegisterModel
-                {
-                    FirstName = model.FirstName,
-                    LastName = model.LastName,
-                    Email = model.Email,
-                    Password = model.Password,
-                    ConfirmPassword = model.ConfirmPassword,
-                    Gender = model.Gender,
-                    City = model.City,
-                    Country = model.Country
-                };
-                BloodDbContext context = new BloodDbContext();
-                context.registerModel.Add(inputModel);
-                context.SaveChanges();
-
                 return BadRequest(ModelState);
             }
+
+            Donor newDonor = new Donor
             {
-            // return success status code
-                return Ok();
-            }
-
-            
-
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                Gender = model.Gender,
+                DateOfBirth = model.DateOfBirth,
+                BloodType = model.BloodType,
+                Address = model.Address,
+                City = model.City,
+                Country = model.Country,
+                Email = model.Email,
+                Phone = model.Phone,
+                Password = model.Password
+            };
+            context.Donors.Add(newDonor);
+            context.SaveChanges();
+            return Ok();
         }
 
 

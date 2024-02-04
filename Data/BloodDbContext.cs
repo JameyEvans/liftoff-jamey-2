@@ -3,40 +3,29 @@ using Microsoft.Extensions.Hosting;
 using System.Reflection.Metadata;
 using Microsoft.EntityFrameworkCore.Design;
 
-using RegisterModel = BloodBankManagmemntSystem.Models.RegisterModel;
+using Donor = BloodBankManagmemntSystem.Models.Donor;
+using BloodBankManagmemntSystem.Models;
 
 namespace BloodBankManagmemntSystem.Data
 {
     public class BloodDbContext : DbContext
     {
-        //public DbSet<RegisterModel>? registerModel { get; set; }
+        public DbSet<Donor>? Donors { get; set; }
+        public DbSet<Employee> Employees { get; set; }
 
-        //public BloodDbContext(DbContextOptions<BloodDbContext> options) : base(options)
-        //{
-        //}
-        //protected override void OnModelCreating(ModelBuilder modelBuilder)
-        //{
-        //    //set up your connection for one to many (employer to jobs)
-        //    base.OnModelCreating(modelBuilder);
-
-        //}
-
-        public DbSet<RegisterModel> registerModel { get; set; }
-        //public DbSet<Post> Posts { get; set; }
-
-        public string DbPath { get; }
-
-        public BloodDbContext()
+        public BloodDbContext(DbContextOptions<BloodDbContext> options) : base(options)
         {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "BloodDB.db");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
 
         }
 
-        // The following configures EF to create a Sqlite database file in the
-        // special "local" folder for your platform.
+        // this sets the database route 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite($"Data Source={DbPath}");
+            => options.UseSqlite($"Data Source=BloodDatabase.db");
+        
+
     }
 }
