@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
+import { useState } from 'react';
 
 export class RegisterUser extends Component {
     static displayName = RegisterUser.name;
 
     constructor(props) {
         super(props);
+
         //this.state = { forecasts: [], loading: true };
         this.handleSubmit = this.handleSubmit.bind(this);
+
     }
    
-    handleSubmit(e) {
-        e.preventDefault();
+    handleSubmit(event) {
+        event.preventDefault();
         const data = new FormData();
         data.append = this.firstName.value;
         data.append = this.lastName.value;
@@ -43,26 +46,68 @@ export class RegisterUser extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="FirstName">First Name: </label>
-                    <input id="FirstName" type="text" placeholder="Enter First Name" ref={(firstName) => this.firstName = firstName} />
-                    <label htmlFor="LastName">Last Name: </label>
-                    <input id="LastName" type="text" placeholder="Enter Last Name" ref={(lastName) => this.lastName = lastName} />
-                    <br /><br />
-                    <label htmlFor="Email">Email: </label>
-                    <input id="Email" type="text" placeholder="Enter Email" ref={(email) => this.email = email} />
-                    <label htmlFor="ConfirmEmail">Confirm Email: </label>
-                    <input id="ConfirmEmail" type="text" placeholder="Enter Confirm Email" ref={(confirmEmail) => this.confirmEmail = confirmEmail} />
-                    <br /><br />
-                    <label htmlFor="Gender">Gender: </label>
-                    <input id="Gender" type="text" placeholder="Gender" ref={(gender) => this.gender = gender} />
-                    <label htmlFor="City">City: </label>
-                    <input id="City" type="text" placeholder="Enter City" ref={(city) => this.city = city} />
-                    <br /><br />
-                    <label htmlFor="Country">Country: </label>
-                    <input id="Country" type="text" placeholder="Enter Country" ref={(country) => this.country = country} />
-                    <br /><br />
                     <p>
-                        <button type="submit">Submit</button>
+                        <label>First Name: </label>
+                        <input id="firstName" type="text" placeholder="Enter First Name"></input>
+                    </p>
+                    <p>
+                        <label>Last Name: </label>
+                        <input id="lastName" type="text" placeholder="Enter Last Name"></input>
+                    </p>
+                    <p>
+                        <label>Gender: </label>
+                        <select id="gender">
+                            <option value="">Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Date of Birth: </label>
+                        <input id="birthDate" type="text" placeholder="Enter Date of Birth"></input>
+                    </p>
+                    <p>
+                        <label>Blood Type: </label>
+                        <select id="bloodType">
+                            <option value="">Select Blood Type</option>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="AB">AB</option>
+                            <option value="O">O</option>
+                        </select>
+                        <select id="rhFactor">
+                            <option value="plus">+</option>
+                            <option value="minus">-</option>
+                        </select>
+                    </p>
+                    <p>
+                        <label>Address </label>
+                        <input id="address" type="text" placeholder="Enter Address"></input>
+                    </p>
+                    <p>
+                        <label>City </label>
+                        <input id="city" type="text" placeholder="Enter City"></input>
+                    </p>
+                    <p>
+                        <label>Country </label>
+                        <input id="country" type="text" placeholder="Enter Country"></input>
+                    </p>
+                    <p>
+                        <label>E-mail </label>
+                        <input id="email" type="text" placeholder="Enter E-Mail"></input>
+                    </p>
+                    <p>
+                        <label>Phone Number </label>
+                        <input id="phoneNumber" type="text" placeholder="Enter Phone Number"></input>
+                    </p>
+                    <p>
+                        <label>Password </label>
+                        <input id="password" type="password" placeholder="Enter Password"></input>
+                    </p>
+                    <p>
+                        <label>Confirm Password </label>
+                        <input id="confirmPassword" type="password" placeholder="Confirm Password"></input>
                     </p>
                 </form>
             </div>

@@ -2,6 +2,7 @@
 using BloodBankManagmemntSystem.Data;
 using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -38,6 +39,7 @@ namespace BloodBankManagmemntSystem.Controllers
         [Route("Register")]
         public ActionResult Register(Donor model)
         {
+            /*
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -59,21 +61,38 @@ namespace BloodBankManagmemntSystem.Controllers
             };
             context.Donors.Add(newDonor);
             context.SaveChanges();
-            return Ok();
+            */
+            return Ok(model);
         }
 
-
-
-        //// PUT api/<UserController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
-
-        //// DELETE api/<UserController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        [HttpGet]
+        [Route("TestDatabaseConnection")]
+        public async Task<IActionResult> TestDatabaseConnection()
+        {
+            try
+            {
+                // Attempt to fetch the first record as a simple test
+                var record = await context.Donors.FirstOrDefaultAsync();
+                return Ok(new { Message = "Connection to the SQLite database was successful." });
+            }
+            catch (Exception ex)
+            {
+                return Problem(detail: $"An error occurred while attempting to connect to the database: {ex.Message}");
+            }
+        }
     }
+
+
+    //// PUT api/<UserController>/5
+    //[HttpPut("{id}")]
+    //public void Put(int id, [FromBody] string value)
+    //{
+    //}
+
+    //// DELETE api/<UserController>/5
+    //[HttpDelete("{id}")]
+    //public void Delete(int id)
+    //{
+    //}
 }
+

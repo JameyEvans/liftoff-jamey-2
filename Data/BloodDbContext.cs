@@ -18,14 +18,13 @@ namespace BloodBankManagmemntSystem.Data
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Donor>();
+            modelBuilder.Entity<Employee>();
 
         }
 
         // this sets the database route 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
             => options.UseSqlite($"Data Source=BloodDatabase.db");
-        
-
     }
 }

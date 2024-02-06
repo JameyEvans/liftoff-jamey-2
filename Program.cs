@@ -1,3 +1,4 @@
+using BloodBankManagmemntSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 
@@ -21,8 +22,6 @@ if (builder.Environment.IsDevelopment())
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials();
-                
-
             });
     });
 }
