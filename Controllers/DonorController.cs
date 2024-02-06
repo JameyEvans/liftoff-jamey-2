@@ -65,21 +65,7 @@ namespace BloodBankManagmemntSystem.Controllers
             return Ok(model);
         }
 
-        [HttpGet]
-        [Route("TestDatabaseConnection")]
-        public async Task<IActionResult> TestDatabaseConnection()
-        {
-            try
-            {
-                // Attempt to fetch the first record as a simple test
-                var record = await context.Donors.FirstOrDefaultAsync();
-                return Ok(new { Message = "Connection to the SQLite database was successful." });
-            }
-            catch (Exception ex)
-            {
-                return Problem(detail: $"An error occurred while attempting to connect to the database: {ex.Message}");
-            }
-        }
+
     }
 
 

@@ -6,40 +6,52 @@ export class RegisterUser extends Component {
 
     constructor(props) {
         super(props);
-
-        //this.state = { forecasts: [], loading: true };
-        this.handleSubmit = this.handleSubmit.bind(this);
-
+        this.state = {
+            firstName: '',
+            lastName: '',
+            gender: '',
+            dateOfBirth: '',
+            bloodType: '',
+            rhFactor: '',
+            address: '',
+            city: '',
+            country: '',
+            email: '',
+            phone: '',
+            password: '',
+            confirmPassword: ''
+        }
     }
-   
+
+    // this allows for the program to adjust the value of the the user's input after interacting with the html components
+    handleChange = (event) => {
+        this.setState({ [event.target.name]: event.target.value })
+    }
+    handleRegistration = (data) => console.log(data)
     handleSubmit(event) {
         event.preventDefault();
-        const data = new FormData();
-        data.append = this.firstName.value;
-        data.append = this.lastName.value;
-        data.append = this.email.value;
-        data.append = this.confirmEmail.value;
-        data.append = this.city.value;
-        data.append = this.gender.value;
-        data.append = this.country.value;
-
-        var xhr = new XMLHttpRequest();
-        xhr.open('POST', 'http://localhost:33767/Donor/Register', true);
-        xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-                // Do something on success
-            }
-        }
-        xhr.send(data);
+        const url = '/Donor/Register';
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    firstName: this.state.firstName,
+                    lastName: this.state.lastName,
+                    gender: this.state.gender,
+                    dateOfBirth: this.state.dateOfBirth,
+                    bloodType: this.state.bloodType,
+                    address: this.state.address,
+                    city: this.state.city,
+                    country: this.state.country,
+                    email: this.state.email,
+                    phone: this.state.phone,
+                    password: this.state.password
+                })
+            });
         
-        //fetch("register", {
-        //    method: "POST",
-        //    headers: { "Content-Type": "application/json" },
-        //    body: JSON.stringify(data)
-        //   }).then(response => response.text());
 
-        
     }
 
     render() {
@@ -48,15 +60,15 @@ export class RegisterUser extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <p>
                         <label>First Name: </label>
-                        <input id="firstName" type="text" placeholder="Enter First Name"></input>
+                        <input id="firstName" type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Last Name: </label>
-                        <input id="lastName" type="text" placeholder="Enter Last Name"></input>
+                        <input id="lastName" type="text" placeholder="Enter Last Name" value={this.state.lastName} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Gender: </label>
-                        <select id="gender">
+                        <select id="gender" value={this.state.gender} onChange={this.handleChange} >
                             <option value="">Select Gender</option>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
@@ -65,7 +77,7 @@ export class RegisterUser extends Component {
                     </p>
                     <p>
                         <label>Date of Birth: </label>
-                        <input id="birthDate" type="text" placeholder="Enter Date of Birth"></input>
+                        <input id="birthDate" type="text" placeholder="Enter Date of Birth" value={this.state.dateOfBirth} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Blood Type: </label>
@@ -77,41 +89,41 @@ export class RegisterUser extends Component {
                             <option value="O">O</option>
                         </select>
                         <select id="rhFactor">
-                            <option value="plus">+</option>
-                            <option value="minus">-</option>
+                            <option value="+">+</option>
+                            <option value="-">-</option>
                         </select>
                     </p>
                     <p>
                         <label>Address </label>
-                        <input id="address" type="text" placeholder="Enter Address"></input>
+                        <input id="address" type="text" placeholder="Enter Address" value={this.state.address} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>City </label>
-                        <input id="city" type="text" placeholder="Enter City"></input>
+                        <value id="city" type="text" placeholder="Enter City" value={this.state.city} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Country </label>
-                        <input id="country" type="text" placeholder="Enter Country"></input>
+                        <input id="country" type="text" placeholder="Enter Country" value={this.state.country} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>E-mail </label>
-                        <input id="email" type="text" placeholder="Enter E-Mail"></input>
+                        <input id="email" type="text" placeholder="Enter E-Mail" value={this.state.email} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Phone Number </label>
-                        <input id="phoneNumber" type="text" placeholder="Enter Phone Number"></input>
+                        <input id="phoneNumber" type="text" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Password </label>
-                        <input id="password" type="password" placeholder="Enter Password"></input>
+                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Confirm Password </label>
-                        <input id="confirmPassword" type="password" placeholder="Confirm Password"></input>
+                        <input id="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
                     </p>
+                    <button type="submit">Register</button>
                 </form>
             </div>
         );
     }
 }
-    
