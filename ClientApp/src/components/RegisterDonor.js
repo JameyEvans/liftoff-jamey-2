@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-export class RegisterUser extends Component {
-    static displayName = RegisterUser.name;
+export class RegisterDonor extends Component {
+    static displayName = RegisterDonor.name;
 
     constructor(props) {
         super(props);
@@ -23,10 +23,28 @@ export class RegisterUser extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     };
-
+    // take the values from the 'blood type' and 'rh factor' dropdowns and combines them
     combineBloodTypeAndRhFactor() {
         const { bloodType, rhFactor } = this.state
         return bloodType + rhFactor
+    }
+    // clears all of the form values upon a  submission
+    resetForm() {
+        this.setState({
+            firstName: '',
+            lastName: '',
+            gender: '',
+            dateOfBirth: '',
+            bloodType: '',
+            rhFactor: '',
+            address: '',
+            city: '',
+            country: '',
+            email: '',
+            phone: '',
+            password: '',
+            confirmPassword: ''
+        })
     }
     // this allows for the program to adjust the value of the the user's input after interacting with the html components
     handleChange = (event) => {
@@ -58,6 +76,7 @@ export class RegisterUser extends Component {
                     password: this.state.password
                 })
             });
+            this.resetForm()
         }
         else {
             console.log("PASSWORDS DO NOT MATCH")
@@ -72,6 +91,8 @@ export class RegisterUser extends Component {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
+                    <h2>Register Donor</h2>
+
                     <p>
                         <label>First Name: </label>
                         <input id="firstName" type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.handleChange} />
