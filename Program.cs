@@ -8,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllersWithViews();
 
+
 // configure CORS
 var specificOrigins = "AppOrigins";
 
@@ -26,6 +27,9 @@ if (builder.Environment.IsDevelopment())
     });
 }
 
+// register the DBcontext
+builder.Services.AddDbContext<BloodDbContext>(options =>
+    options.UseSqlite("Data Source=BloodDatabase.db"));
 
 var app = builder.Build();
 

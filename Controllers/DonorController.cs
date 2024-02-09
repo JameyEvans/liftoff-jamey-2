@@ -35,11 +35,10 @@ namespace BloodBankManagmemntSystem.Controllers
         //}
 
         // POST api/<UserController>
-        [HttpPost]
-        [Route("Register")]
+        [HttpPost("Register")]
         public ActionResult Register(Donor model)
         {
-            /*
+            
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -59,9 +58,18 @@ namespace BloodBankManagmemntSystem.Controllers
                 Phone = model.Phone,
                 Password = model.Password
             };
-            context.Donors.Add(newDonor);
-            context.SaveChanges();
-            */
+
+
+            try
+            {
+                context.Donors.Add(newDonor);
+                context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Internal Server Error" + ex.Message);
+            }
+            
             return Ok(model);
         }
 

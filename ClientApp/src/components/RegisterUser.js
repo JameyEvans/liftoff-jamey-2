@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { useState } from 'react';
 
 export class RegisterUser extends Component {
     static displayName = RegisterUser.name;
@@ -21,16 +20,25 @@ export class RegisterUser extends Component {
             password: '',
             confirmPassword: ''
         }
-    }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleSubmit = this.handleSubmit.bind(this)
+    };
 
+    combineBloodTypeAndRhFactor() {
+        const { bloodType, rhFactor } = this.state
+        return bloodType + rhFactor
+    }
     // this allows for the program to adjust the value of the the user's input after interacting with the html components
     handleChange = (event) => {
-        this.setState({ [event.target.name]: event.target.value })
+        this.setState({ [event.target.id]: event.target.value })
     }
     handleRegistration = (data) => console.log(data)
+
     handleSubmit(event) {
         event.preventDefault();
         const url = '/Donor/Register';
+
+        if (this.state.password === this.state.confirmPassword) {
             fetch(url, {
                 method: 'POST',
                 headers: {
@@ -41,7 +49,7 @@ export class RegisterUser extends Component {
                     lastName: this.state.lastName,
                     gender: this.state.gender,
                     dateOfBirth: this.state.dateOfBirth,
-                    bloodType: this.state.bloodType,
+                    bloodType: this.combineBloodTypeAndRhFactor(),
                     address: this.state.address,
                     city: this.state.city,
                     country: this.state.country,
@@ -50,7 +58,13 @@ export class RegisterUser extends Component {
                     password: this.state.password
                 })
             });
-        
+        }
+        else {
+            console.log("PASSWORDS DO NOT MATCH")
+        }
+
+
+
 
     }
 
@@ -77,18 +91,18 @@ export class RegisterUser extends Component {
                     </p>
                     <p>
                         <label>Date of Birth: </label>
-                        <input id="birthDate" type="text" placeholder="Enter Date of Birth" value={this.state.dateOfBirth} onChange={this.handleChange} />
+                        <input id="dateOfBirth" type="text" placeholder="MM/DD/YYYY" value={this.state.dateOfBirth} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Blood Type: </label>
-                        <select id="bloodType">
+                        <select id="bloodType" value={this.state.bloodType} onChange={this.handleChange}>
                             <option value="">Select Blood Type</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="AB">AB</option>
                             <option value="O">O</option>
                         </select>
-                        <select id="rhFactor">
+                        <select id="rhFactor" value={this.state.rhFactor} onChange={this.handleChange}>
                             <option value="+">+</option>
                             <option value="-">-</option>
                         </select>
@@ -99,7 +113,7 @@ export class RegisterUser extends Component {
                     </p>
                     <p>
                         <label>City </label>
-                        <value id="city" type="text" placeholder="Enter City" value={this.state.city} onChange={this.handleChange} />
+                        <input id="city" type="text" placeholder="Enter City" value={this.state.city} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Country </label>
@@ -111,7 +125,7 @@ export class RegisterUser extends Component {
                     </p>
                     <p>
                         <label>Phone Number </label>
-                        <input id="phoneNumber" type="text" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} />
+                        <input id="phone" type="text" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} />
                     </p>
                     <p>
                         <label>Password </label>
