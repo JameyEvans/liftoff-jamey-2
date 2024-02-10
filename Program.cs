@@ -1,3 +1,4 @@
+using BloodBankManagmemntSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 
@@ -6,6 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 
 builder.Services.AddControllersWithViews();
+
 
 // configure CORS
 var specificOrigins = "AppOrigins";
@@ -21,12 +23,13 @@ if (builder.Environment.IsDevelopment())
                 .AllowAnyHeader()
                 .AllowAnyMethod()
                 .AllowCredentials();
-                
-
             });
     });
 }
 
+// register the DBcontext
+builder.Services.AddDbContext<BloodDbContext>(options =>
+    options.UseSqlite("Data Source=BloodDatabase.db"));
 
 var app = builder.Build();
 
