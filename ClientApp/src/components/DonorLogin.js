@@ -1,6 +1,11 @@
 ﻿import React, { Component } from 'react';
+import { useNavigate } from 'react-router-dom'
 
-export class DonorLogin extends Component {
+function DonorLoginFunction(props) {
+    let navigate = useNavigate();
+    return <DonorLogin navigate={navigate} />
+}
+class DonorLogin extends Component {
     static displayName = DonorLogin.name;
 
     constructor(props) {
@@ -12,7 +17,6 @@ export class DonorLogin extends Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleLogin.bind(this)
     };
-    // take the values from the 'blood type' and 'rh factor' dropdowns and combines them
 
     // clears all of the form values upon a  submission
     resetForm() {
@@ -25,19 +29,6 @@ export class DonorLogin extends Component {
     handleChange = (event) => {
         this.setState({ [event.target.id]: event.target.value })
     }
-
-    /*
-    handleLogin(event) {
-        event.preventDefault();
-        const response = fetch('/Donor/Login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                body: JSON.stringify({ username: this.state.username, password: this.state.password })
-            },
-        });
-    }
-    */
 
     handleLogin = (event) => {
         event.preventDefault();
@@ -59,18 +50,16 @@ export class DonorLogin extends Component {
                 if (!response.ok) {
                     throw new Error('Response Failed')
                 }
-                return response.json();
-                
+                return response.json()
             })
             .then(data => {
-                console.log(data)
+                this.props.navigate('/donor-dashboard');
             })
             .catch(error => {
                 console.error(`Error Message ${error.message}`)
             });
 
     }
-
 
     render() {
         return (
@@ -92,3 +81,4 @@ export class DonorLogin extends Component {
         );
     }
 }
+export default DonorLoginFunction;
