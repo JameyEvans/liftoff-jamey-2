@@ -9,7 +9,7 @@ namespace BloodBankManagmemntSystem.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class  DonorController : ControllerBase
+    public class DonorController : ControllerBase
     {
         // establish database context
         private BloodDbContext context;
@@ -18,26 +18,17 @@ namespace BloodBankManagmemntSystem.Controllers
         {
             context = dbcontext;
         }
-       
-        // GET: api/<UserController>
-        [HttpGet]
-        public IEnumerable<string> Get()
+        // create class for login objects
+        public class UserLoginObject
         {
-            return new string[] { "value1", "value2" };
+            public string UserName { get; set; }
+            public string Password { get; set; }
         }
 
-        //// GET api/<UserController>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
-
-        // POST api/<UserController>
         [HttpPost("Register")]
         public ActionResult Register(Donor model)
         {
-            
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -68,24 +59,43 @@ namespace BloodBankManagmemntSystem.Controllers
             {
                 return StatusCode(500, "Internal Server Error" + ex.Message);
             }
-            
+
             return Ok(model);
         }
 
 
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody]UserLoginObject login)
+        {
+            Donor matchedDonor = null;
+
+            List<Donor> donors = context.Donors.ToList();
+             foreach (Donor donor in donors)
+            {
+                if (login.UserName == donor.Email)
+                {
+                    matchedDonor = donor;
+                    break;
+                }
+            }
+            if (matchedDonor != null && matchedDonor.Password == login.Password)
+            {
+                return Ok(new {message = "Login Successful!", redirectTo = "/donor-dashboard" });
+            }
+            return BadRequest();
+        }
+
+
+        //// PUT api/<UserController>/5
+        //[HttpPut("{id}")]
+        //public void Put(int id, [FromBody] string value)
+        //{
+        //}
+
+        //// DELETE api/<UserController>/5
+        //[HttpDelete("{id}")]
+        //public void Delete(int id)
+        //{
+        //}
     }
-
-
-    //// PUT api/<UserController>/5
-    //[HttpPut("{id}")]
-    //public void Put(int id, [FromBody] string value)
-    //{
-    //}
-
-    //// DELETE api/<UserController>/5
-    //[HttpDelete("{id}")]
-    //public void Delete(int id)
-    //{
-    //}
 }
-

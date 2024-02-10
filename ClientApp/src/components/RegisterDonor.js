@@ -124,6 +124,7 @@ export class RegisterDonor extends Component {
                             <option value="O">O</option>
                         </select>
                         <select id="rhFactor" value={this.state.rhFactor} onChange={this.handleChange}>
+                        <option value="">Select +/-</option>
                             <option value="+">+</option>
                             <option value="-">-</option>
                         </select>

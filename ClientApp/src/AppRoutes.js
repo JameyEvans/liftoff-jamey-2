@@ -3,7 +3,8 @@ import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
 import { RegisterDonor } from "./components/RegisterDonor";
 import { RegisterEmployee } from "./components/RegisterEmployee";
-
+import { DonorLogin } from "./components/DonorLogin";
+import { DonorDashboard } from "./components/DonorDashboard";
 
 const AppRoutes = [
     {
@@ -25,8 +26,15 @@ const AppRoutes = [
     {
         path: '/register-employee',
         element: <RegisterEmployee />
+    },
+    {
+        path: '/donor-login',
+        element: <DonorLogin />
+    },
+    {
+        path: 'donor-dashboard',
+        element: <DonorDashboard />
     }
-
 ];
 
 export default AppRoutes;
