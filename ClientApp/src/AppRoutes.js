@@ -5,6 +5,8 @@ import { RegisterDonor } from "./components/RegisterDonor";
 import { RegisterEmployee } from "./components/RegisterEmployee";
 import DonorLoginFunction, { DonorLogin } from "./components/DonorLogin";
 import { DonorDashboard } from "./components/DonorDashboard";
+import EmployeeLoginFunction, { EmployeeLogin } from "./components/EmployeeLogin";
+import { EmployeeDashboard } from "./components/EmployeeDashboard";
 
 const AppRoutes = [
     {
@@ -34,6 +36,14 @@ const AppRoutes = [
     {
         path: '/donor-dashboard',
         element: <DonorDashboard />
+    },
+    {
+        path: '/employee-login',
+        element: <EmployeeLoginFunction />
+    },
+    {
+        path: '/employee-dashboard',
+        element: <EmployeeDashboard />
     }
 ];
 

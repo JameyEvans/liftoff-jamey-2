@@ -43,8 +43,6 @@ class DonorLogin extends Component {
                     username: this.state.username,
                     password: this.state.password
                 })
-
-
         })
             .then(response => {
                 if (!response.ok) {

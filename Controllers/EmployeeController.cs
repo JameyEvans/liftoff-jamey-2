@@ -1,6 +1,7 @@
 ﻿using BloodBankManagmemntSystem.Data;
 using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
+using static BloodBankManagmemntSystem.Controllers.DonorController;
 
 namespace BloodBankManagmemntSystem.Controllers
 {
@@ -16,6 +17,12 @@ namespace BloodBankManagmemntSystem.Controllers
         {
             context = dbcontext;
         }
+        public class EmployeeLoginObject
+        {
+            public string UserName { get; set; }
+            public string Password { get; set; }
+        }
+
 
         [HttpPost("Register")]
         public ActionResult Register(Employee model)
@@ -47,6 +54,26 @@ namespace BloodBankManagmemntSystem.Controllers
             }
 
             return Ok(model);
+        }
+        [HttpPost("Login")]
+        public IActionResult Login([FromBody] EmployeeLoginObject login)
+        {
+            Employee matchedEmployee = null;
+
+            List<Employee> employees = context.Employees.ToList();
+            foreach (Employee employee in employees)
+            {
+                if (login.UserName == employee.Email)
+                {
+                    matchedEmployee = employee;
+                    break;
+                }
+            }
+            if (matchedEmployee != null && matchedEmployee.Password == login.Password)
+            {
+                return Ok(new { message = "Login Successful!", redirectTo = "/donor-dashboard" });
+            }
+            return BadRequest();
         }
 
 

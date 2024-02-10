@@ -19,7 +19,7 @@ namespace BloodBankManagmemntSystem.Controllers
             context = dbcontext;
         }
         // create class for login objects
-        public class UserLoginObject
+        public class DonorLoginObject
         {
             public string UserName { get; set; }
             public string Password { get; set; }
@@ -65,7 +65,7 @@ namespace BloodBankManagmemntSystem.Controllers
 
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody]UserLoginObject login)
+        public IActionResult Login([FromBody]DonorLoginObject login)
         {
             Donor matchedDonor = null;
 
