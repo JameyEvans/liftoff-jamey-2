@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import states from './StatesList';
 
 export class RegisterDonor extends Component {
     static displayName = RegisterDonor.name;
+    
 
     constructor(props) {
         super(props);
@@ -14,7 +16,7 @@ export class RegisterDonor extends Component {
             rhFactor: '',
             address: '',
             city: '',
-            country: '',
+            state: '',
             email: '',
             phone: '',
             password: '',
@@ -39,7 +41,7 @@ export class RegisterDonor extends Component {
             rhFactor: '',
             address: '',
             city: '',
-            country: '',
+            state: '',
             email: '',
             phone: '',
             password: '',
@@ -63,17 +65,17 @@ export class RegisterDonor extends Component {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    firstName: this.state.firstName,
-                    lastName: this.state.lastName,
+                    firstName: this.state.firstName.trim(),
+                    lastName: this.state.lastName.trim(),
                     gender: this.state.gender,
-                    dateOfBirth: this.state.dateOfBirth,
+                    dateOfBirth: this.state.dateOfBirth.trim(),
                     bloodType: this.combineBloodTypeAndRhFactor(),
-                    address: this.state.address,
-                    city: this.state.city,
-                    country: this.state.country,
-                    email: this.state.email,
-                    phone: this.state.phone,
-                    password: this.state.password
+                    address: this.state.address.trim(),
+                    city: this.state.city.trim(),
+                    state: this.state.state,
+                    email: this.state.email.trim(),
+                    phone: this.state.phone.trim(),
+                    password: this.state.password.trim()
                 })
             });
             this.resetForm()
@@ -89,6 +91,7 @@ export class RegisterDonor extends Component {
 
     render() {
         return (
+ 
             <div>
                 <form onSubmit={this.handleSubmit}>
                     <h2>Register Donor</h2>
@@ -138,8 +141,11 @@ export class RegisterDonor extends Component {
                         <input id="city" type="text" placeholder="Enter City" value={this.state.city} onChange={this.handleChange} required/>
                     </p>
                     <p>
-                        <label>Country </label>
-                        <input id="country" type="text" placeholder="Enter Country" value={this.state.country} onChange={this.handleChange} required/>
+                        <label>State</label>
+                        <select id="state" value={this.state.state} onChange={this.handleChange} required>
+                            <option value="">Select a state</option>
+                            {states.map((state, index) => (<option key={index} value={state}>{state}</option>))}
+                        </select>
                     </p>
                     <p>
                         <label>E-mail </label>

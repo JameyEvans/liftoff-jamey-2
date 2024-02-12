@@ -32,18 +32,29 @@ export class NavMenu extends Component {
                             <NavItem>
                                 <NavLink tag={Link} className="text-dark" to="/">Home</NavLink>
                             </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="text-dark" to="/employee-login">Employee Login</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="text-dark" to="/donor-login">Donor Login</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="text-dark" to="/register-donor">Register Donor</NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink tag={Link} className="text-dark" to="/register-employee">Register Employee</NavLink>
-                            </NavItem>
+                            <div class="LoginDropdown">
+                            User Login
+                                <div class="DropdownContent">
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/donor-login">Donor Login</NavLink>
+                                    </NavItem>
+                                    <NavItem>
+                                        <NavLink tag={Link} className="text-dark" to="/employee-login">Employee Login</NavLink>
+                                    </NavItem>
+                                </div>
+                            </div>
+                            <div class="RegisterDropdown">
+                            User Register
+                                <div class="DropdownContent">
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/register-donor">Register Donor</NavLink>
+                                </NavItem>
+                                <NavItem>
+                                    <NavLink tag={Link} className="text-dark" to="/register-employee">Register Employee</NavLink>
+                                </NavItem>
+                                </div>
+                            </div>
+
                            
                         </ul>
                     </Collapse>

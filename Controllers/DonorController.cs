@@ -43,7 +43,7 @@ namespace BloodBankManagmemntSystem.Controllers
                 BloodType = model.BloodType,
                 Address = model.Address,
                 City = model.City,
-                Country = model.Country,
+                State = model.State,
                 Email = model.Email,
                 Phone = model.Phone,
                 Password = model.Password
