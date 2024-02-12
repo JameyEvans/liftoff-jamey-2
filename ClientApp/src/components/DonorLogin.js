@@ -1,21 +1,25 @@
-﻿import React, { Component } from 'react';
+﻿import React, { createContext, Component, useContext } from 'react';
 import { useNavigate } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 
+// the only reason I'm keeping this stuff class-based instead of switching it over to a function is because we're too tight on time right now 
 function DonorLoginFunction(props) {
-    let navigate = useNavigate();
-    return <DonorLogin navigate={navigate} />
+    const navigate = useNavigate();
+    const { login } = useContext(AuthContext)
+    return <DonorLogin navigate={navigate}/>
 }
 class DonorLogin extends Component {
     static displayName = DonorLogin.name;
-
+    static contextType = AuthContext;
     constructor(props) {
         super(props);
         this.state = {
             username: '',
             password: ''
         }
+
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleLogin.bind(this)
+        this.handleLoginAttempt = this.handleLoginAttempt.bind(this)
     };
 
     // clears all of the form values upon a  submission
@@ -30,47 +34,29 @@ class DonorLogin extends Component {
         this.setState({ [event.target.id]: event.target.value })
     }
 
-    handleLogin = (event) => {
+    handleLoginAttempt = (event) => {
         event.preventDefault();
-        console.log(this.state)
-        fetch('/Donor/Login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(
-                {
-                    username: this.state.username,
-                    password: this.state.password
-                })
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Response Failed')
-                }
-                return response.json()
-            })
-            .then(data => {
-                this.props.navigate('/donor-dashboard');
+        const auth = this.context;
+        this.context.login(this.state.username, this.state.password)
+            .then(() => {
+                console.log("success")
             })
             .catch(error => {
-                console.error(`Error Message ${error.message}`)
-            });
-
+                console.error("Login failed, error: ", error)
+            })
     }
-
     render() {
         return (
             <div>
-                <form onSubmit={this.handleLogin}>
+                <form onSubmit={this.handleLoginAttempt}>
                     <h2>Donor Login</h2>
                     <p>
                         <label>Email: </label>
-                        <input id="username" type="text" placeholder="Enter Email" value={this.state.username} onChange={this.handleChange} />
+                        <input id="username" type="text" placeholder="Enter Email" value={this.state.username} onChange={this.handleChange} required/>
                     </p>
                     <p>
                         <label>Password: </label>
-                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} />
+                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} required/>
                     </p>
                     <button type="submit">Login</button>
                 </form>

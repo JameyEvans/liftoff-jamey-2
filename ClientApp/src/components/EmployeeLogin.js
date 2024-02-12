@@ -69,11 +69,11 @@ class EmployeeLogin extends Component {
                     <h2>Employee Login</h2>
                     <p>
                         <label>Email: </label>
-                        <input id="username" type="text" placeholder="Enter Email" value={this.state.username} onChange={this.handleChange} />
+                        <input id="username" type="text" placeholder="Enter Email" value={this.state.username} onChange={this.handleChange} required />
                     </p>
                     <p>
                         <label>Password: </label>
-                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} />
+                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} required/>
                     </p>
                     <button type="submit">Login</button>
                 </form>
