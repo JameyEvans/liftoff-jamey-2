@@ -69,7 +69,7 @@ export class RegisterEmployee extends Component {
 
 
 
-
+       
     }
 
     render() {
@@ -119,8 +119,9 @@ export class RegisterEmployee extends Component {
                         <input id="phone" type="number" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} required="required"
                             oninvalid="this.setCustomValidity('Please Enter Phone Number')"
                             oninput="this.setCustomValidity('')" />
-                    </p>/>
+
                     </p>
+
                     <p>
                         <label>Password </label>
                         <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} required="required"
