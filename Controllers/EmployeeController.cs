@@ -76,7 +76,12 @@ namespace BloodBankManagmemntSystem.Controllers
             return BadRequest();
         }
 
-
+        [HttpGet("GetDonorList")]
+        public IActionResult GetDonorList() 
+        {
+            List<Donor> fullDonorList= context.Donors.ToList();
+            return Ok(fullDonorList);
+        }
 
     }
 }

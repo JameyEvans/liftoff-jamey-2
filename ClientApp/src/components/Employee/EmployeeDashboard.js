@@ -8,7 +8,7 @@ export class EmployeeDashboard extends Component {
                 Hello logged-in Employee!
                 <div class="DonorDashboardNavbar">
                     <ul>
-                        <li>List of Donors</li>
+                        <li><Link to="/donor-list">Donor List</Link></li>
                         <li>Blood Stock</li>
                         <li><Link to="/edit-employee-info">Edit Account Information</Link></li>
                     </ul>

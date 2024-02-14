@@ -9,7 +9,7 @@ import EmployeeLoginFunction, { EmployeeLogin } from "./components/Employee/Empl
 import { EmployeeDashboard } from "./components/Employee/EmployeeDashboard";
 import { EditDonorInfo } from "./components/Donor/EditDonorInfo";
 import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo"
-
+import { DonorList } from "./components/Employee/DonorList"
 const AppRoutes = [
     {
         index: true,
@@ -54,6 +54,10 @@ const AppRoutes = [
     {
         path: '/edit-employee-info',
         element: <EditEmployeeInfo />
+    },
+    {
+        path: '/donor-list',
+        element: <DonorList />
     }
 ];
 
