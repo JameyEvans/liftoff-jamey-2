@@ -1,10 +1,11 @@
 ﻿import React, { Component } from 'react';
 
-export class EmployeeDashboard extends Component {
+export class EditEmployeeInfo extends Component {
     render() {
         return (
             <div>
-                Hello logged-in employee!
+                This is where employees go to edit their personal information.
+
             </div>
         );
     }

@@ -1,12 +1,14 @@
 import { Counter } from "./components/Counter";
 import { FetchData } from "./components/FetchData";
 import { Home } from "./components/Home";
-import { RegisterDonor } from "./components/RegisterDonor";
-import { RegisterEmployee } from "./components/RegisterEmployee";
-import DonorLoginFunction, { DonorLogin } from "./components/DonorLogin";
-import { DonorDashboard } from "./components/DonorDashboard";
-import EmployeeLoginFunction, { EmployeeLogin } from "./components/EmployeeLogin";
-import { EmployeeDashboard } from "./components/EmployeeDashboard";
+import { RegisterDonor } from "./components/Donor/RegisterDonor";
+import { RegisterEmployee } from "./components/Employee/RegisterEmployee";
+import DonorLoginFunction, { DonorLogin } from "./components/Donor/DonorLogin";
+import { DonorDashboard } from "./components/Donor/DonorDashboard";
+import EmployeeLoginFunction, { EmployeeLogin } from "./components/Employee/EmployeeLogin";
+import { EmployeeDashboard } from "./components/Employee/EmployeeDashboard";
+import { EditDonorInfo } from "./components/Donor/EditDonorInfo";
+import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo"
 
 const AppRoutes = [
     {
@@ -44,6 +46,14 @@ const AppRoutes = [
     {
         path: '/employee-dashboard',
         element: <EmployeeDashboard />
+    },
+    {
+        path: '/edit-donor-info',
+        element: <EditDonorInfo />
+    },
+    {
+        path: '/edit-employee-info',
+        element: <EditEmployeeInfo />
     }
 ];
 

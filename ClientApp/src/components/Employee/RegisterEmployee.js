@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import states from './StatesList';
+import states from '../StatesList';
 
 export class RegisterEmployee extends Component {
     static displayName = RegisterEmployee.name;
