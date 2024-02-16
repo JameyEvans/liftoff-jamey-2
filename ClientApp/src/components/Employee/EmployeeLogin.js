@@ -32,7 +32,7 @@ class EmployeeLogin extends Component {
 
     handleLogin = (event) => {
         event.preventDefault();
-        console.log(this.state)
+     
         fetch('/Employee/Login', {
             method: 'POST',
             headers: {

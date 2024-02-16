@@ -9,6 +9,8 @@ export class DonorList extends Component {
             searchTerm: '',
             isInputVisible: false,
         }
+        this.handleSearch = this.handleSearch.bind(this)
+        this.handleChange = this.handleChange.bind(this)
     }
 
     componentDidMount() {
@@ -31,12 +33,41 @@ export class DonorList extends Component {
             default: return 'Other';
         }
     }
+
+    handleSearch(event) { 
+        event.preventDefault();
+
+        const queryParams = new URLSearchParams({
+            searchParam: this.state.searchParam,
+            searchTerm: this.state.searchTerm
+        }).toString();
+
+        fetch(`/Employee/SearchDonorList?${queryParams}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok")
+                }
+                return response.json();
+            })
+            .then(data => {
+                this.setState({ donorList: data });
+            })
+            .catch(error => {
+                console.error(`There was a problem with your fetch operation`, error);
+            })
+    }
+
     render() {
         const { donorList } = this.state;
         return (
             <div>
                 <div class="SearchBar">
-                    <form>
+                    <form onSubmit={this.handleSearch}>
                         <p>Search By:
                             <select id="searchParam" value={this.state.searchParam} onChange={this.handleChange} required>
                                 <option value="">Select A Search Category</option>
@@ -45,10 +76,12 @@ export class DonorList extends Component {
                                 <option value="gender">Gender</option>
                                 <option value="bloodType">Blood Type</option>
                                 <option value="address">Address</option>
+                                <option value="city">City</option>
                                 <option value="state">State</option>
                             </select>
                         </p>
                         <input id="searchTerm" type="text" placeholder={`Enter Search Term`} value={this.state.searchTerm} onChange={this.handleChange} required />
+                        <button type="submit">Search</button>
                     </form>
 
                 </div>
