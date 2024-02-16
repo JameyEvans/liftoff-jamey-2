@@ -40,6 +40,9 @@ namespace BloodBankManagmemntSystem.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
@@ -62,7 +65,7 @@ namespace BloodBankManagmemntSystem.Migrations
 
             modelBuilder.Entity("BloodBankManagmemntSystem.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -90,7 +93,7 @@ namespace BloodBankManagmemntSystem.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
                 });

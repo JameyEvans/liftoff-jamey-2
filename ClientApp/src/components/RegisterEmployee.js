@@ -60,6 +60,7 @@ export class RegisterEmployee extends Component {
                     password: this.state.password
                 })
             });
+            alert("User created successfully.")
             this.resetForm();
         }
         else {
@@ -68,7 +69,7 @@ export class RegisterEmployee extends Component {
 
 
 
-
+       
     }
 
     render() {
@@ -79,39 +80,59 @@ export class RegisterEmployee extends Component {
 
                     <p>
                         <label>First Name: </label>
-                        <input id="firstName" type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.handleChange} />
+                        <input id="firstName" type="text" placeholder="Enter First Name" value={this.state.firstName} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Enter User First Name')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>Last Name: </label>
-                        <input id="lastName" type="text" placeholder="Enter Last Name" value={this.state.lastName} onChange={this.handleChange} />
+                        <input id="lastName" type="text" placeholder="Enter Last Name" value={this.state.lastName} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Enter User Last Name')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>Address </label>
-                        <input id="address" type="text" placeholder="Enter Address" value={this.state.address} onChange={this.handleChange} />
+                        <input id="address" type="text" placeholder="Enter Address" value={this.state.address} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Please Enter Address')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>City </label>
-                        <input id="city" type="text" placeholder="Enter City" value={this.state.city} onChange={this.handleChange} />
+                        <input id="city" type="text" placeholder="Enter City" value={this.state.city} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Please Enter City')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>Country </label>
-                        <input id="country" type="text" placeholder="Enter Country" value={this.state.country} onChange={this.handleChange} />
+                        <input id="country" type="text" placeholder="Enter Country" value={this.state.country} onChange={this.handleChange}  required="required"
+                            oninvalid="this.setCustomValidity('Please Enter Country')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>E-mail </label>
-                        <input id="email" type="text" placeholder="Enter E-Mail" value={this.state.email} onChange={this.handleChange} />
+                        <input id="email" type="text" placeholder="Enter E-Mail" value={this.state.email} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Please Enter Email')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>Phone Number </label>
-                        <input id="phone" type="text" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} />
+                        <input id="phone" type="number" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Please Enter Phone Number')"
+                            oninput="this.setCustomValidity('')" />
+
                     </p>
+
                     <p>
                         <label>Password </label>
-                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} />
+                        <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} required="required"
+                            oninvalid="this.setCustomValidity('Please Enter Password')"
+                            oninput="this.setCustomValidity('')" />
                     </p>
                     <p>
                         <label>Confirm Password </label>
-                        <input id="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} />
+                    <input id="confirmPassword" type="password" placeholder="Confirm Password" value={this.state.confirmPassword} onChange={this.handleChange} required="required"
+                        oninvalid="this.setCustomValidity('Please Enter Confirm Password')"
+                        oninput="this.setCustomValidity('')" />
                     </p>
                     <button type="submit">Register</button>
                 </form>

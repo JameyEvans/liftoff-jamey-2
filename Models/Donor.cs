@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Runtime.ExceptionServices;
 using System.Xml.Linq;
 
@@ -9,7 +10,9 @@ namespace BloodBankManagmemntSystem.Models
     public class Donor
     {
         [Key]
-        public  int Id { get; set; }    
+        public  int Id { get; set; }
+        [ForeignKey ("Employee")]
+        public int EmployeeId { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
         public string? Gender { get; set; }
