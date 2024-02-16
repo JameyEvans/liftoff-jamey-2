@@ -14,6 +14,12 @@ export default function Account() {
             }}
         >
 
+            <p>
+                <i>
+                    Hello, {firstName} {lastName}!
+                </i>
+            </p>
+
             <label>
                 First Name: {" "}
                 {editing ? (
@@ -27,6 +33,11 @@ export default function Account() {
                     <b>{firstName}</b>
                 )}
             </label>
+
+            <span>
+                <br />
+            </span>
+
 
             <label>
                 Last Name: {" "}
@@ -42,12 +53,13 @@ export default function Account() {
                 )}
             </label>
 
+            <span>
+                <br />
+                <br />
+            </span>
+
             <button type="submit">{editing ? "Save" : "Edit"} Profile </button>
-            <p>
-                <i>
-                    Hello, {firstName} {lastName}!
-                </i>
-            </p>
+
         </form>
     );
 }
