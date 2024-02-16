@@ -8,7 +8,7 @@ export class DonorDashboard extends Component{
                 Hello logged-in donor!
                 <div class="DonorDashboardNavbar">
                     <ul>
-                        <li>Questionaire</li>
+                        <li><Link to="questionnaire">Questionnaire</Link></li>
                         <li>Schedule An Appointment</li>
                         <li>Locate Blood Donation Sites</li>
                         <li><Link to="/edit-donor-info">Edit Account Information</Link></li>
