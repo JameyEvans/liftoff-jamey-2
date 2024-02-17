@@ -17,27 +17,11 @@ namespace BloodBankManagmemntSystem.SendMail
         }
         private MimeMessage CreateEmailMessage(Message message)
         {
-            //var emailMessage = new MimeMessage();
-            //// emailMessage.From.Add(new MailboxAddress(_emailConfig.From));
-            //emailMessage.From.Add(new MailboxAddress("email", _emailConfig.From));
-            //emailMessage.To.AddRange(message.To);
-            //emailMessage.Subject = message.Subject;
-            //emailMessage.Body = new TextPart(MimeKit.Text.TextFormat.Text) { Text = message.Content };
-
             var emailMessage = new MimeMessage();
             emailMessage.From.Add(MailboxAddress.Parse("bbmblaunch@gmail.com"));
             emailMessage.To.Add(MailboxAddress.Parse(message.To.ToString()));
             emailMessage.Subject = message.Subject;
             emailMessage.Body = new TextPart(TextFormat.Plain) { Text = message.Content };
-
-
-
-            //var emailMessage = new MimeMessage();
-            //emailMessage.From.Add(MailboxAddress.Parse("bbmblaunch@gmail.com"));
-            //emailMessage.To.Add(MailboxAddress.Parse("dr.suman1jan@gmail.com"));
-            //emailMessage.Subject = "Test Email Subject";
-            //emailMessage.Body = new TextPart(TextFormat.Plain) { Text = "Example Plain Text Message Body" };
-
             return emailMessage;
         }
 
@@ -50,7 +34,6 @@ namespace BloodBankManagmemntSystem.SendMail
                     client.CheckCertificateRevocation = false;
                     
                     client.Connect(_emailConfig.SmtpServer, _emailConfig.Port, true);
-                   //client.Connect("smtp.gmail.com", 465, true);
                     client.AuthenticationMechanisms.Remove("XOAUTH2");
                     client.Authenticate("bbmblaunch@gmail.com", "lfdm jslw qfsi ktob");
 
@@ -58,7 +41,6 @@ namespace BloodBankManagmemntSystem.SendMail
                 }
                 catch
                 {
-                    //log an error message or throw an exception or both.
                     throw;
                 }
                 finally
