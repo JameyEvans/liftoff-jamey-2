@@ -10,6 +10,8 @@ import { EmployeeDashboard } from "./components/Employee/EmployeeDashboard";
 import { EditDonorInfo } from "./components/Donor/EditDonorInfo";
 import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo"
 import { DonorList } from "./components/Employee/DonorList"
+import { BloodbankLocation } from "./components/Donor/BloodbankLocation"
+
 const AppRoutes = [
     {
         index: true,
@@ -58,6 +60,10 @@ const AppRoutes = [
     {
         path: '/donor-list',
         element: <DonorList />
+    },
+    {
+        path: '/locate-bloodbank',
+        element: <BloodbankLocation />
     }
 ];
 

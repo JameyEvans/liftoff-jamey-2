@@ -32,6 +32,8 @@ if (builder.Environment.IsDevelopment())
 builder.Services.AddDbContext<BloodDbContext>(options =>
     options.UseSqlite("Data Source=BloodDatabase.db"));
 
+builder.Services.AddHttpClient();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
