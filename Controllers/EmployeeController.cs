@@ -1,5 +1,8 @@
 ﻿using BloodBankManagmemntSystem.Data;
 using BloodBankManagmemntSystem.Models;
+using BloodBankManagmemntSystem.SendMail;
+using MailKit.Net.Imap;
+using MailKit.Security;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BloodBankManagmemntSystem.Controllers
@@ -11,10 +14,12 @@ namespace BloodBankManagmemntSystem.Controllers
 
         // establish database context 
         private BloodDbContext context;
+        private IEmailSender _emailSender;
 
-        public EmployeeController(BloodDbContext dbcontext)
+        public EmployeeController(BloodDbContext dbcontext, IEmailSender emailSender)
         {
             context = dbcontext;
+            _emailSender = emailSender;
         }
 
         [HttpPost("Register")]
@@ -40,8 +45,22 @@ namespace BloodBankManagmemntSystem.Controllers
             {
                 context.Employees.Add(newEmployee);
                 context.SaveChanges();
+
+
+                using (var client = new ImapClient())
+                {
+                    client.Connect("imap.gmail.com", 993, SecureSocketOptions.SslOnConnect);
+                    client.Authenticate("bbmblaunch@gmail.com", "lfdm jslw qfsi ktob");
+                    var message = new Message();
+                    message.Subject = "User Regidtration Completed!.";
+                    message.Content = "User Registration completed. Please login to see more details.";
+                    message.To = "dr.suman1jan@gmail.com";
+                    _emailSender.SendEmail(message);
+
+                }
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return StatusCode(500, "Internal Server Error" + ex.Message);
             }

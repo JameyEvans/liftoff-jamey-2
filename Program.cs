@@ -1,4 +1,5 @@
 using BloodBankManagmemntSystem.Data;
+using BloodBankManagmemntSystem.SendMail;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 
@@ -26,6 +27,14 @@ if (builder.Environment.IsDevelopment())
             });
     });
 }
+
+var emailConfig = builder.Configuration
+        .GetSection("EmailConfiguration")
+        .Get<EmailConfiguration>();
+builder.Services.AddSingleton(emailConfig);
+builder.Services.AddScoped<IEmailSender, EmailSender>();
+
+builder.Services.AddControllers();
 
 // register the DBcontext
 builder.Services.AddDbContext<BloodDbContext>(options =>
