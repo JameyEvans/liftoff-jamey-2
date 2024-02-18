@@ -21,7 +21,7 @@ export class Home extends Component {
         const data = this.fetchData;
         return (
             <div>
-            Home Page
+                Home Page
             </div>
         );
     }

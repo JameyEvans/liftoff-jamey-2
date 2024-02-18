@@ -1,4 +1,7 @@
-﻿using BloodBankManagmemntSystem.ComponentModel;
+﻿using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
+using BloodBankManagmemntSystem.ComponentModel;
 using BloodBankManagmemntSystem.Data;
 using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -17,13 +20,17 @@ namespace BloodBankManagmemntSystem.Controllers
         public DonorController(BloodDbContext dbcontext)
         {
             context = dbcontext;
+            FindLoggedInDonor();
         }
+
         // create class for login objects
         public class DonorLoginObject
         {
             public string UserName { get; set; }
             public string Password { get; set; }
         }
+
+        public int LoggedInDonorId { get; set; }
 
         [HttpPost("Register")]
         public ActionResult Register(Donor model)
@@ -49,6 +56,7 @@ namespace BloodBankManagmemntSystem.Controllers
                 Password = model.Password
             };
 
+            Donor loggedInDonor = new Donor();
 
             try
             {
@@ -65,12 +73,12 @@ namespace BloodBankManagmemntSystem.Controllers
 
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody]DonorLoginObject login)
+        public IActionResult Login([FromBody] DonorLoginObject login)
         {
             Donor matchedDonor = null;
 
             List<Donor> donors = context.Donors.ToList();
-             foreach (Donor donor in donors)
+            foreach (Donor donor in donors)
             {
                 if (login.UserName == donor.Email)
                 {
@@ -80,22 +88,38 @@ namespace BloodBankManagmemntSystem.Controllers
             }
             if (matchedDonor != null && matchedDonor.Password == login.Password)
             {
-                return Ok(new {message = "Login Successful!", redirectTo = "/donor-dashboard" });
+                LoggedInDonorId = matchedDonor.Id;
+                return Ok(new { message = "Login Successful!", redirectTo = "/donor-dashboard" });
             }
             return BadRequest();
         }
 
+        ///Use Find() to locate the logged in user in the database by their Id
+        public Donor? FindLoggedInDonor()
+        {
+            Donor? TestDonor = context.Donors.First(donor => donor.Id == LoggedInDonorId);
+            return TestDonor;
+        }
 
-        //// PUT api/<UserController>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody] string value)
-        //{
-        //}
+           /* var loggedInDonor2 = BloodDbContext.Donors
+                  .Where(s => s.Id == Donors.Id)
+                  .Include(s => s.FirstName)
+                  .FirstOrDefault();
+           */
 
-        //// DELETE api/<UserController>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
-    }
+          ///Iterate through the user's data and add them as parameters to a loggedInDonor object of the Donor class
+
+
+            //// PUT api/<UserController>/5
+            //[HttpPut("{id}")]
+            //public void Put(int id, [FromBody] string value)
+            //{
+            //}
+
+            //// DELETE api/<UserController>/5
+            //[HttpDelete("{id}")]
+            //public void Delete(int id)
+            //{
+            //}
+        }
 }
