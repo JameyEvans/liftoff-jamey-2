@@ -54,7 +54,7 @@ namespace BloodBankManagmemntSystem.Controllers
                     var message = new Message();
                     message.Subject = "User Regidtration Completed!.";
                     message.Content = "User Registration completed. Please login to see more details.";
-                    message.To = "dr.suman1jan@gmail.com";
+                    message.To = newEmployee.Email.ToString();
                     _emailSender.SendEmail(message);
 
                 }
