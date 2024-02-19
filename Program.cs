@@ -1,6 +1,7 @@
 using BloodBankManagmemntSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -30,6 +31,8 @@ if (builder.Environment.IsDevelopment())
 // register the DBcontext
 builder.Services.AddDbContext<BloodDbContext>(options =>
     options.UseSqlite("Data Source=BloodDatabase.db"));
+
+builder.Services.AddHttpClient();
 
 var app = builder.Build();
 

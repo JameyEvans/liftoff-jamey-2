@@ -4,8 +4,9 @@
   word-break: break-all;
 }
 
+
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 @media (min-width: 768px) {
   html {
@@ -15,4 +16,23 @@ html {
 
 .box-shadow {
   box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.LoginDropdown {
+    position: relative;
+    display: inline-block;
+    margin: 3px
+}
+.RegisterDropdown {
+    position: relative;
+    display: inline-block;
+    margin: 3px
+}
+.DropdownContent{
+    display:none;
+    position: absolute;
+}
+
+.LoginDropdown:hover .DropdownContent, .RegisterDropdown:hover .DropdownContent {
+    display: block;
 }
