@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BloodBankManagmemntSystem.Migrations
 {
     [DbContext(typeof(BloodDbContext))]
-    [Migration("20240206051228_TestMigration")]
-    partial class TestMigration
+    [Migration("20240214165204_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -42,6 +42,9 @@ namespace BloodBankManagmemntSystem.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("TEXT");
 
@@ -64,7 +67,7 @@ namespace BloodBankManagmemntSystem.Migrations
 
             modelBuilder.Entity("BloodBankManagmemntSystem.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -92,7 +95,7 @@ namespace BloodBankManagmemntSystem.Migrations
                     b.Property<string>("Phone")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
                 });

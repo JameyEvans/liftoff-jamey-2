@@ -60,6 +60,7 @@ export class RegisterEmployee extends Component {
                     password: this.state.password.trim()
                 })
             });
+            alert("User created successfully.")
             this.resetForm();
         }
         else {
@@ -68,7 +69,7 @@ export class RegisterEmployee extends Component {
 
 
 
-
+       
     }
 
     render() {
@@ -108,6 +109,7 @@ export class RegisterEmployee extends Component {
                         <label>Phone Number </label>
                         <input id="phone" type="text" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} required />
                     </p>
+
                     <p>
                         <label>Password </label>
                         <input id="password" type="password" placeholder="Enter Password" value={this.state.password} onChange={this.handleChange} required />
