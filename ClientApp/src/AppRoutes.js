@@ -11,6 +11,7 @@ import { EditDonorInfo } from "./components/Donor/EditDonorInfo";
 import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo"
 import { DonorList } from "./components/Employee/DonorList"
 import { BloodbankLocation } from "./components/Donor/BloodbankLocation"
+import Questionnaire from "./components/Donor/Questionnaire";
 
 const AppRoutes = [
     {
@@ -64,6 +65,10 @@ const AppRoutes = [
     {
         path: '/locate-bloodbank',
         element: <BloodbankLocation />
+    },
+    {
+        path: '/questionnaire',
+        element: <Questionnaire />
     }
 ];
 
