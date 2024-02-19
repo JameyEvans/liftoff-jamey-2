@@ -4,8 +4,10 @@ using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
 using System.Drawing.Drawing2D;
 using System.Net.Http;
+using System.Xml.Serialization;
 
 namespace BloodBankManagmemntSystem.Controllers
 {
@@ -41,6 +43,8 @@ namespace BloodBankManagmemntSystem.Controllers
 
         public class Coordinates
         {
+            public Coordinates() { }
+
             public double Latitude { get; set; }
             public double Longitude { get; set; }
             public Coordinates(double latitude, double longitude)
@@ -49,6 +53,23 @@ namespace BloodBankManagmemntSystem.Controllers
                 Longitude = longitude;
             }
         }
+
+        public class BloodBankDonationDetails
+        {
+            public BloodBankDonationDetails() { }
+            public string Name { get; set; }
+            public string PlaceID { get; set; }
+            public string Address { get; set; }
+
+            public BloodBankDonationDetails(string name, string id, string address)
+            {
+                Name = name;
+                PlaceID = id;
+                Address = address;
+
+            }
+        }
+
 
         // also the apiKey for google maps
         private string apiKey = "AIzaSyCfRjtPBXDS9k6LvxstSqfRgUTkKk134KQ";
@@ -147,11 +168,11 @@ namespace BloodBankManagmemntSystem.Controllers
                 return StatusCode(500, "Failed to geocode address due to an external API error.");
             }
         }
-        [HttpPost("LocateNearbyDonationSites")]
-        public async Task<IActionResult> LocateNearbyDonationSites([FromBody] Coordinates coordinateSet)
+        [HttpGet("LocateNearbyDonationSites")]
+        public async Task<IActionResult> LocateNearbyDonationSites([FromQuery] Coordinates coordinateSet)
         {
             string baseURL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json";
-            string fullURL = $"{baseURL}?location={coordinateSet.Latitude},{coordinateSet.Longitude}&radius=5000&type=hospital&key={apiKey}";
+            string fullURL = $"{baseURL}?location={coordinateSet.Latitude},{coordinateSet.Longitude}&radius=5000&type=health&keyword=blood+bank&key={apiKey}";
 
             HttpResponseMessage response = await _httpClient.GetAsync(fullURL);
 
@@ -162,7 +183,22 @@ namespace BloodBankManagmemntSystem.Controllers
 
                 if (json["status"].ToString() == "OK")
                 {
-                    return Ok(json["results"]);
+                    List<BloodBankDonationDetails> bloodBankList = new List<BloodBankDonationDetails>();
+
+                    JArray resultsArray = (JArray)json["results"];
+                    for (int i = 0; i < resultsArray.Count; i++)
+                    {
+                        var arrayItem = resultsArray[i];
+                        bloodBankList.Add(new BloodBankDonationDetails((string)arrayItem["name"], (string)arrayItem["place_id"], (string)arrayItem["vicinity"]));
+                    }
+
+                    Debug.WriteLine($"{bloodBankList}");
+                    for (int i = 0; i < bloodBankList.Count; i++)
+                    {
+                        Debug.WriteLine(bloodBankList[i].Name);
+                    }
+                    return Ok(bloodBankList);
+                    
                 }
                 else
                 {
