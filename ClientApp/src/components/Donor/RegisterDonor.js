@@ -78,6 +78,7 @@ export class RegisterDonor extends Component {
                     password: this.state.password.trim()
                 })
             });
+            alert("User created successfully.")
             this.resetForm()
         }
         else {
@@ -153,7 +154,7 @@ export class RegisterDonor extends Component {
                     </p>
                     <p>
                         <label>Phone Number </label>
-                        <input id="phone" type="tel" placeholder="Enter Phone Number" value={this.state.phone} onChange={this.handleChange} required />
+                        <input id="phone" type="tel" placeholder="(###)-###-###" value={this.state.phone} onChange={this.handleChange} required />
                     </p>
                     <p>
                         <label>Password </label>
