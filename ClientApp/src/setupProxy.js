@@ -4,7 +4,8 @@ const { env } = require('process');
 const target = env.ASPNETCORE_HTTPS_PORT ? `https://localhost:${env.ASPNETCORE_HTTPS_PORT}` :
   env.ASPNETCORE_URLS ? env.ASPNETCORE_URLS.split(';')[0] : 'http://localhost:33767';
 
-const context =  [
+const context = [
+  "/api",
   "/weatherforecast",
   "/Donor",
   "/Employee",
@@ -16,6 +17,9 @@ module.exports = function(app) {
     secure: false,
     headers: {
       Connection: 'Keep-Alive'
+      },
+    pathRewrite: {
+        '^/api/': '/', // remove /api from the request path
     }
   });
 

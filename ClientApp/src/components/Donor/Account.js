@@ -1,10 +1,51 @@
 ﻿import React,
-{ useState } from "react";
+{ useEffect,
+useState } from "react";
 
 export default function Account() {
     const [ editing, setEditing ] = useState(false);
     const [ firstName, setFirstName ] = useState("Lydia");
     const [lastName, setLastName] = useState("Dames");
+    const [dataLoaded, setDataLoaded] = useState(false);
+    const [isError, setIsError] = useState(false);
+
+    useEffect(() => {
+        getUserData();
+    }, []);
+
+    const getUserData = async () => {
+        const response = await fetch("api/donor/FindLoggedInDonor");
+        if (!response.ok) {
+            // handle the error
+
+            // set isError to true and update your error handling logic
+        }
+        const data = await response.json();
+        console.log(data);
+        setFirstName(data.firstName);
+        setLastName(data.lastName);
+        setDataLoaded(true);
+    }
+
+    const setUserData = async () => {
+        const response = await fetch("api/donor/UpdateDonor", {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                firstName,
+                lastName,
+            }),
+        });
+
+        if (!response.ok) {
+            // handle the error
+            // set isError to true and update your error handling logic
+        }
+        const data = await response.json();
+        console.log(data);
+    }
 
     return (
         <form
