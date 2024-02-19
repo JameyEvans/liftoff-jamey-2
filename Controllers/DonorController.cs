@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
+using System.Security.Cryptography.X509Certificates;
+using System.Security.Policy;
+using BloodBankManagmemntSystem.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Net.Http;
 using System.Xml.Serialization;
@@ -33,6 +36,8 @@ namespace BloodBankManagmemntSystem.Controllers
             public string UserName { get; set; }
             public string Password { get; set; }
         }
+
+        public int LoggedInDonorId { get; set; }
 
         // geocoding request
 
@@ -98,6 +103,7 @@ namespace BloodBankManagmemntSystem.Controllers
                 Password = model.Password
             };
 
+            Donor loggedInDonor = new Donor();
 
             try
             {
@@ -129,11 +135,26 @@ namespace BloodBankManagmemntSystem.Controllers
             }
             if (matchedDonor != null && matchedDonor.Password == login.Password)
             {
-                return Ok(new {message = "Login Successful!", redirectTo = "/donor-dashboard" });
+                LoggedInDonorId = matchedDonor.Id;
+                //return Ok(new JsonResult(new { message = "Login Successful!", redirectTo = "/donor-dashboard" }));
+                return Ok(new { message = "Login Successful!", redirectTo = "/donor-dashboard" });
             }
             return BadRequest();
         }
 
+        ///Use Find() to locate the logged in user in the database by their Id
+        [HttpGet("FindLoggedInDonor")]
+
+        public IActionResult FindLoggedInDonor()
+        {
+            //Donor? TestDonor = context.Donors.First(donor => donor.Id == LoggedInDonorId);
+            Donor TestDonor = context.Donors.Find(1);
+            if (TestDonor != null)
+            {
+                return Ok(TestDonor);
+            }
+            return StatusCode(404, "Donor not found");
+        }
 
         [HttpPost("GeocodeAddress")]
         public async Task<IActionResult> GeocodeAddress([FromBody] Geocode request)

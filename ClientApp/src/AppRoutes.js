@@ -12,6 +12,7 @@ import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo"
 import { DonorList } from "./components/Employee/DonorList"
 import { BloodbankLocation } from "./components/Donor/BloodbankLocation"
 import Questionnaire from "./components/Donor/Questionnaire";
+import Account from "./components/Donor/Account";
 
 const AppRoutes = [
     {
@@ -69,6 +70,10 @@ const AppRoutes = [
     {
         path: '/questionnaire',
         element: <Questionnaire />
+    },
+    {
+        path: '/account',
+        element: <Account />
     }
 ];
 
