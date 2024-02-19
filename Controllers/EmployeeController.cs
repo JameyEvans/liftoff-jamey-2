@@ -1,5 +1,6 @@
 ﻿using BloodBankManagmemntSystem.Data;
 using BloodBankManagmemntSystem.Models;
+using BloodBankManagmemntSystem.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata;
 using System.Net;
@@ -14,10 +15,14 @@ namespace BloodBankManagmemntSystem.Controllers
 
         // establish database context 
         private BloodDbContext context;
+        private readonly string senderEmail;
+        private readonly string senderName;
 
-        public EmployeeController(BloodDbContext dbcontext)
+        public EmployeeController(BloodDbContext dbcontext, IConfiguration configuration)
         {
             context = dbcontext;
+            this.senderEmail = configuration["BrevoApi:SenderEmail"]!;
+            this.senderName = configuration["BrevoApi:SenderName"];
         }
         public class EmployeeLoginObject
         {
@@ -54,6 +59,17 @@ namespace BloodBankManagmemntSystem.Controllers
             {
                 context.Employees.Add(newEmployee);
                 context.SaveChanges();
+                //Send confirmation email
+                string recieverEmail = newEmployee.Email!;
+                string recieverName = newEmployee.FirstName + newEmployee.LastName;
+                string subject = "Account Created Succesfully.";
+                string message = "Dear " + recieverName + "\n" +
+                    "We have have created your account in Blood Management system." + "\n" +
+                    "Thank you for being member of system." + "\n" +
+                    "Best Regards" + "\n" +
+                    "Blood Management System";
+
+                EmailSender.SendEmail(senderEmail, senderName, recieverEmail, recieverName, subject, message);
             }
             catch (Exception ex)
             {

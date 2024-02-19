@@ -2,11 +2,16 @@ using BloodBankManagmemntSystem.Data;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Identity;
+using System.Configuration;
+using sib_api_v3_sdk.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+//Configuration.Default.ApiKey.Add("api-key", "YOUR API KEY");
+//var config = builder.Configuration["BrevoApi:ApiKey"];
+sib_api_v3_sdk.Client.Configuration.Default.ApiKey.Add("api-key", builder.Configuration["BrevoApi:ApiKey"]);
 builder.Services.AddControllersWithViews();
 
 
