@@ -11,7 +11,7 @@ export class DonorDashboard extends Component{
                         <li><Link to="/questionnaire">Eligibility Questionnaire</Link></li>
                         <li>Schedule An Appointment</li>
                         <li><Link to="/locate-bloodbank">Locate Blood Donation Sites Near You</Link></li>
-                        <li><Link to="/edit-donor-info">Edit Account Information</Link></li>
+                        <li><Link to="/account">Account</Link></li>
                     </ul>
                 </div>
             </div>

@@ -34,6 +34,8 @@ namespace BloodBankManagmemntSystem.Controllers
             public string Password { get; set; }
         }
 
+        public int LoggedInDonorId { get; set; }
+
         // geocoding request
 
         public class Geocode
@@ -129,9 +131,24 @@ namespace BloodBankManagmemntSystem.Controllers
             }
             if (matchedDonor != null && matchedDonor.Password == login.Password)
             {
+                LoggedInDonorId = matchedDonor.Id;
                 return Ok(new {message = "Login Successful!", redirectTo = "/donor-dashboard" });
             }
             return BadRequest();
+        }
+
+        ///Use Find() to locate the logged in user in the database by their Id
+        [HttpGet("FindLoggedInDonor")]
+
+        public IActionResult FindLoggedInDonor()
+        {
+            //Donor? TestDonor = context.Donors.First(donor => donor.Id == LoggedInDonorId);
+            Donor TestDonor = context.Donors.Find(1);
+            if (TestDonor != null)
+            {
+                return Ok(TestDonor);
+            }
+            return StatusCode(404, "Donor not found");
         }
 
 
