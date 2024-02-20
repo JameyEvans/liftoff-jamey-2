@@ -75,7 +75,6 @@ namespace BloodBankManagmemntSystem.Controllers
             }
         }
 
-
         // also the apiKey for google maps
         private string apiKey = "AIzaSyCfRjtPBXDS9k6LvxstSqfRgUTkKk134KQ";
 
@@ -136,8 +135,7 @@ namespace BloodBankManagmemntSystem.Controllers
             if (matchedDonor != null && matchedDonor.Password == login.Password)
             {
                 LoggedInDonorId = matchedDonor.Id;
-                //return Ok(new JsonResult(new { message = "Login Successful!", redirectTo = "/donor-dashboard" }));
-                return Ok(new { message = "Login Successful!", redirectTo = "/donor-dashboard" });
+                return Ok(new JsonResult(new { message = "Login Successful!", redirectTo = "/donor-dashboard" }));
             }
             return BadRequest();
         }

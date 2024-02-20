@@ -32,7 +32,7 @@ export default function Account() {
     }
 
     const setUserData = async () => {
-        const response = await fetch("api/donor/Account", {
+        const response = await fetch("api/Donor/Account", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
