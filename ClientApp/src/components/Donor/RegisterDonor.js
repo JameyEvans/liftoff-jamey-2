@@ -78,6 +78,7 @@ export class RegisterDonor extends Component {
                     password: this.state.password.trim()
                 })
             });
+            alert("User created successfully.")
             this.resetForm()
         }
         else {

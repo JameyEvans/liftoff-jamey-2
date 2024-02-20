@@ -12,15 +12,16 @@ namespace BloodBankManagmemntSystem.Data
     {
         public DbSet<Donor>? Donors { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Donation> Donations { get; set; }
 
         public BloodDbContext(DbContextOptions<BloodDbContext> options) : base(options)
         {
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Donor>();
-            modelBuilder.Entity<Employee>();
-
+            modelBuilder.Entity<Donation>()
+                .HasOne(d => d.Donor)
+                .WithMany(p => p.DonationHistory);
         }
 
         // this sets the database route 

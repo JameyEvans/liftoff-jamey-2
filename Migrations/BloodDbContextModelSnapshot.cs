@@ -16,6 +16,34 @@ namespace BloodBankManagmemntSystem.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.26");
 
+            modelBuilder.Entity("BloodBankManagmemntSystem.Models.Donation", b =>
+                {
+                    b.Property<int>("DonationID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Date")
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("DonorId")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Location")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("ServicingEmployeeName")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Time")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("DonationID");
+
+                    b.HasIndex("DonorId");
+
+                    b.ToTable("Donations");
+                });
+
             modelBuilder.Entity("BloodBankManagmemntSystem.Models.Donor", b =>
                 {
                     b.Property<int>("Id")
@@ -62,7 +90,7 @@ namespace BloodBankManagmemntSystem.Migrations
 
             modelBuilder.Entity("BloodBankManagmemntSystem.Models.Employee", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int>("EmployeeId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -90,9 +118,25 @@ namespace BloodBankManagmemntSystem.Migrations
                     b.Property<string>("State")
                         .HasColumnType("TEXT");
 
-                    b.HasKey("Id");
+                    b.HasKey("EmployeeId");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("BloodBankManagmemntSystem.Models.Donation", b =>
+                {
+                    b.HasOne("BloodBankManagmemntSystem.Models.Donor", "Donor")
+                        .WithMany("DonationHistory")
+                        .HasForeignKey("DonorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Donor");
+                });
+
+            modelBuilder.Entity("BloodBankManagmemntSystem.Models.Donor", b =>
+                {
+                    b.Navigation("DonationHistory");
                 });
 #pragma warning restore 612, 618
         }
