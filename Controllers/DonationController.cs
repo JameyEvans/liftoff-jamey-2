@@ -57,5 +57,12 @@ namespace BloodBankManagmemntSystem.Controllers
             return Ok(donation);
         }
 
+        [HttpGet("GetDonationHistory")]
+        public IActionResult FetchDonationHistory()
+        {
+            List<Donation> donations = context.Donations.ToList();
+            return Ok(donations);
+        }
+
     }
 }

@@ -42,6 +42,7 @@ export class AddDonation extends Component {
                 location: this.state.location
             })
         })
+        alert("Donation added successfully")
     }
     
 
