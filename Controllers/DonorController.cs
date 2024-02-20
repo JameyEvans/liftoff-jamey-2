@@ -11,6 +11,7 @@ using BloodBankManagmemntSystem.ComponentModel;
 using System.Drawing.Drawing2D;
 using System.Net.Http;
 using System.Xml.Serialization;
+using System.Web;
 
 namespace BloodBankManagmemntSystem.Controllers
 {
@@ -36,8 +37,6 @@ namespace BloodBankManagmemntSystem.Controllers
             public string UserName { get; set; }
             public string Password { get; set; }
         }
-
-        public int LoggedInDonorId { get; set; }
 
         // geocoding request
 
@@ -102,8 +101,6 @@ namespace BloodBankManagmemntSystem.Controllers
                 Password = model.Password
             };
 
-            Donor loggedInDonor = new Donor();
-
             try
             {
                 context.Donors.Add(newDonor);
@@ -121,10 +118,9 @@ namespace BloodBankManagmemntSystem.Controllers
         [HttpPost("Login")]
         public IActionResult Login([FromBody]DonorLoginObject login)
         {
-            Donor matchedDonor = null;
+            Donor? matchedDonor = null;
 
-            List<Donor> donors = context.Donors.ToList();
-             foreach (Donor donor in donors)
+             foreach (Donor donor in context.Donors)
             {
                 if (login.UserName == donor.Email)
                 {
@@ -134,7 +130,8 @@ namespace BloodBankManagmemntSystem.Controllers
             }
             if (matchedDonor != null && matchedDonor.Password == login.Password)
             {
-                LoggedInDonorId = matchedDonor.Id;
+                HttpContext.Session.SetInt32("LoggedInDonorId", matchedDonor.Id);
+                Debug.Print("email:{0} id:{1}", matchedDonor.Email, matchedDonor.Id);
                 return Ok(new JsonResult(new { message = "Login Successful!", redirectTo = "/donor-dashboard" }));
             }
             return BadRequest();
@@ -142,16 +139,61 @@ namespace BloodBankManagmemntSystem.Controllers
 
         ///Use Find() to locate the logged in user in the database by their Id
         [HttpGet("FindLoggedInDonor")]
-
         public IActionResult FindLoggedInDonor()
         {
-            //Donor? TestDonor = context.Donors.First(donor => donor.Id == LoggedInDonorId);
-            Donor TestDonor = context.Donors.Find(1);
+            int? LoggedInDonorId = HttpContext.Session.GetInt32("LoggedInDonorId");
+            Debug.WriteLine("FindLoggedInDonor is running");
+            Debug.WriteLine(LoggedInDonorId);
+
+            if (context.Donors == null)
+            {
+                return StatusCode(404, "Donor not found");
+            }
+            //Donor? TestDonor = context.Donors.FirstOrDefault(donor => donor.Id == LoggedInDonorId);
+            Donor? TestDonor = context.Donors.Find(LoggedInDonorId);
             if (TestDonor != null)
             {
                 return Ok(TestDonor);
             }
             return StatusCode(404, "Donor not found");
+        }
+
+        // TODO XXXXXXX Write HttpPut to set the updatew database GGRRRRR XXXXX
+        //GRRRRRRRRRRRRRR
+
+        [HttpPut("UpdateUserData")]
+        public IActionResult UpdateUserData()
+        {
+            try
+            {
+                int? loggedInDonorId = HttpContext.Session.GetInt32("LoggedInDonorId");
+
+                if (!loggedInDonorId.HasValue)
+                {
+                    return BadRequest("Not logged in.");
+                }
+
+                // Retrieve the current user's data from the database
+                Donor existingDonor = context.Donors.Find(loggedInDonorId);
+
+                if (existingDonor == null)
+                {
+                    return NotFound("Donor not found.");
+                }
+
+                // Update the properties of the retrieved user with the new values
+                existingDonor.FirstName = existingDonor.FirstName;
+                existingDonor.LastName = existingDonor.LastName;
+
+                // Save the changes to the database
+                context.SaveChanges();
+
+                return Ok(existingDonor);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+            }
         }
 
         [HttpPost("GeocodeAddress")]
@@ -187,6 +229,7 @@ namespace BloodBankManagmemntSystem.Controllers
                 return StatusCode(500, "Failed to geocode address due to an external API error.");
             }
         }
+
         [HttpGet("LocateNearbyDonationSites")]
         public async Task<IActionResult> LocateNearbyDonationSites([FromQuery] Coordinates coordinateSet)
         {

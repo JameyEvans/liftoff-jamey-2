@@ -16,7 +16,7 @@ export default function Account() {
     }, []);
 
     const getUserData = async () => {
-        const response = await fetch("api/donor/FindLoggedInDonor");
+        const response = await fetch("/Donor/FindLoggedInDonor");
         if (!response.ok) {
             // handle the error
             // set isError to true and update your error handling logic
@@ -32,22 +32,30 @@ export default function Account() {
     }
 
     const setUserData = async () => {
-        const response = await fetch("api/Donor/Account", {
+        const response = await fetch("/Donor/UpdateUserData", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                firstName,
-                lastName,
+                firstName: editing ? firstName : null, // Send updated first name only if editing
+                lastName: editing ? lastName : null,   // Send updated last name only if editing
             }),
         });
+
         if (!response.ok) {
             // handle the error
             // set isError to true and update your error handling logic
+            setIsError(true);
+            console.error('Error setting user data:', response.statusText);
+            return;
         }
+
         const data = await response.json();
         console.log(data);
+
+        // If the update is successful, you might want to reload the user data
+        getUserData();
     }
 
     return (
@@ -101,8 +109,7 @@ export default function Account() {
                 <br />
                 <br />
             </span>
-
-            <button type="submit">{editing ? "Save" : "Edit"} Profile </button>
+            <button type="submit" onClick={setUserData}>{editing ? "Save" : "Edit"} Profile </button>
 
         </form>
     );
