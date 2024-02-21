@@ -32,17 +32,18 @@ export default function Account() {
     }
 
     const setUserData = async () => {
+        if (!editing)
+            return;
         const response = await fetch("/Donor/UpdateUserData", {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                firstName: editing ? firstName : null, // Send updated first name only if editing
-                lastName: editing ? lastName : null,   // Send updated last name only if editing
+                firstName: firstName,
+                lastName: lastName 
             }),
         });
-
         if (!response.ok) {
             // handle the error
             // set isError to true and update your error handling logic
@@ -54,7 +55,6 @@ export default function Account() {
         const data = await response.json();
         console.log(data);
 
-        // If the update is successful, you might want to reload the user data
         getUserData();
     }
 

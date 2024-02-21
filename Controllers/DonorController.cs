@@ -38,6 +38,13 @@ namespace BloodBankManagmemntSystem.Controllers
             public string Password { get; set; }
         }
 
+        // create class for login objects 
+        public class UpdateDonorObject
+        {
+            public string FirstName { get; set; }
+            public string LastName { get; set; }
+        }
+
         // geocoding request
 
         public class Geocode
@@ -162,38 +169,35 @@ namespace BloodBankManagmemntSystem.Controllers
         //GRRRRRRRRRRRRRR
 
         [HttpPut("UpdateUserData")]
-        public IActionResult UpdateUserData()
+        public IActionResult UpdateUserData([FromBody] UpdateDonorObject update)
         {
-            try
+            int? loggedInDonorId = HttpContext.Session.GetInt32("LoggedInDonorId");
+
+            if (loggedInDonorId == null)
             {
-                int? loggedInDonorId = HttpContext.Session.GetInt32("LoggedInDonorId");
-
-                if (!loggedInDonorId.HasValue)
-                {
-                    return BadRequest("Not logged in.");
-                }
-
-                // Retrieve the current user's data from the database
-                Donor existingDonor = context.Donors.Find(loggedInDonorId);
-
-                if (existingDonor == null)
-                {
-                    return NotFound("Donor not found.");
-                }
-
-                // Update the properties of the retrieved user with the new values
-                existingDonor.FirstName = existingDonor.FirstName;
-                existingDonor.LastName = existingDonor.LastName;
-
-                // Save the changes to the database
-                context.SaveChanges();
-
-                return Ok(existingDonor);
+                return BadRequest("Not logged in.");
             }
-            catch (Exception ex)
+
+            if (context.Donors == null)
             {
-                return StatusCode(500, $"Internal Server Error: {ex.Message}");
+                return StatusCode(404, "Donor not found");
             }
+
+            // Retrieve the current user's data from the database
+            Donor? existingDonor = context.Donors.Find(loggedInDonorId);
+
+            if (existingDonor == null)
+            {
+                 return NotFound("Donor not found.");
+            }
+
+            existingDonor.FirstName = update.FirstName;
+            existingDonor.LastName = update.LastName;
+
+            // Save the changes to the database
+            context.SaveChanges();
+
+            return Ok(existingDonor);
         }
 
         [HttpPost("GeocodeAddress")]
@@ -275,3 +279,5 @@ namespace BloodBankManagmemntSystem.Controllers
         
     }
 }
+
+//```
