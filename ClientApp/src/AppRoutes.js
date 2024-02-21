@@ -12,6 +12,7 @@ import { DonorList } from "./components/Employee/DonorList"
 import { BloodbankLocation } from "./components/Donor/BloodbankLocation"
 import Questionnaire from "./components/Donor/Questionnaire";
 import Account from "./components/Donor/Account";
+import Contact from "./components/Donor/Contact"
 
 const AppRoutes = [
     {
@@ -69,6 +70,10 @@ const AppRoutes = [
     {
         path: '/account',
         element: <Account />
+    },
+    {
+        path: '/contact',
+        element: <Contact />
     }
 ];
 

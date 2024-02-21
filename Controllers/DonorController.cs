@@ -1,17 +1,8 @@
-﻿using BloodBankManagmemntSystem.ComponentModel;
-using BloodBankManagmemntSystem.Data;
+﻿using BloodBankManagmemntSystem.Data;
 using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using System.Diagnostics;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Policy;
-using BloodBankManagmemntSystem.ComponentModel;
-using System.Drawing.Drawing2D;
-using System.Net.Http;
-using System.Xml.Serialization;
-using System.Web;
 
 namespace BloodBankManagmemntSystem.Controllers
 {

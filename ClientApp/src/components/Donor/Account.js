@@ -1,8 +1,5 @@
 ﻿import React,
-{
-    useEffect,
-    useState
-} from "react";
+{ useEffect, useState} from "react";
 
 export default function Account() {
     const [editing, setEditing] = useState(false);
