@@ -1,22 +1,31 @@
 ﻿import React, { useRef } from "react";
-import emailjs from "\index"
+import emailjs from "@emailjs/browser";
 
 
 export default function ContactForm() {
     const form = useRef();
 
+
     const sendEmail = (e) => {
         e.preventDefault();
 
-        emailjs.sendForm(
-            "service_x6p3df2",
-            "template_gsr5uus",
-            form.current,
-            "IkkjdETjR32xscfXV"
-        ).then(
-            result => console.log(result.text),
-            error => console.log(error.text)
-        );
+        emailjs
+            .sendForm(
+                "service_b4qmiqc",
+                "template_h9rzd14",
+                form.current,
+                "user_UHpNJFij8MtQD1aAfs38X"
+            )
+            .then(
+                (result) => {
+                    console.log(result.text);
+                    alert("Your email has been sent.");
+                },
+                (error) => {
+                    console.log(error.text);
+                    alert("Your email failed to send.", error);
+                }
+            );
     };
 
     return (
