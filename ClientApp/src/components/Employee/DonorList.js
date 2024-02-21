@@ -11,6 +11,7 @@ export class DonorList extends Component {
         }
         this.handleSearch = this.handleSearch.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
     }
 
     componentDidMount() {
@@ -26,6 +27,13 @@ export class DonorList extends Component {
             .catch(error => console.error('Error fetching data:', error))
 
     }
+    fetchDonorListDesc() {
+        fetch('/Employee/GetDonorListDesc')
+            .then(response => response.json())
+            .then(data => this.setState({ donorList: data }))
+            .catch(error => console.error('Error fetching data:', error))
+
+    }
     getShortenedGender(gender) {
         switch (gender) {
             case 'male': return "M";
@@ -33,6 +41,32 @@ export class DonorList extends Component {
             default: return 'Other';
         }
     }
+    handleClick = () => {
+        this.setState({
+            donorList: this.state.order
+                ? this.state.donorList.sort((a, b) => {
+                    if (a.bloodType < b.bloodType) return -1;
+                    if (a.bloodType > b.bloodType) return 1;
+                    return 0;
+                })
+                : this.state.donorList.reverse((a, b) => {
+                    if (a.bloodType < b.bloodType) return 1;
+                    if (a.bloodType > b.bloodType) return -1;
+                    return 0;
+                }),
+            order: !this.state.order,
+        });
+    }
+    //handleClick() {
+
+    //    // Changing state
+    //    const { bloodType, donorList } = this.state;
+    //    // Copy the array if going in DESC order to avoid resorting for ASC
+    //    const sortedUsers = bloodType ? donorList.slice().reverse() : donorList;
+    //    this.setState({ donorList: sortedUsers, bloodType: !bloodType });
+    //    //this.setState({ donorList: DonorList })
+    //}
+
 
     handleSearch(event) { 
         event.preventDefault();
@@ -83,8 +117,11 @@ export class DonorList extends Component {
                         </p>
                         <input id="searchTerm" type="text" placeholder={`Enter Search Term`} value={this.state.searchTerm} onChange={this.handleChange} required />
                         <button type="submit">Search</button>
+                       
                     </form>
-
+                    <button onClick={this.handleClick}>
+                        Sort Blood Type!
+                    </button>
                 </div>
                 <div class="DonorListTable">
                     <table>
