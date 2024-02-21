@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 function DonorLoginFunction(props) {
     const navigate = useNavigate();
     //const { login } = useContext(AuthContext)
-    return <DonorLogin navigate={navigate}/>
+    return <DonorLogin navigate={navigate} />
 }
 class DonorLogin extends Component {
     static displayName = DonorLogin.name;
