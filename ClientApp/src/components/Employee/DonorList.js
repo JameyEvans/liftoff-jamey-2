@@ -52,9 +52,10 @@ export class DonorList extends Component {
                 if (!response.ok) {
                     throw new Error("Network response was not ok")
                 }
-                return response;
+                return response.json();
             })
             .then(data => {
+                debugger
                 this.setState({ donorList: data });
             })
             .catch(error => {
@@ -103,7 +104,7 @@ export class DonorList extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            {donorList.map((donor, index) => (
+                            {this.state.donorList.map((donor, index) => (
                                 <tr key={index}>
                                     <td>{donor.id}</td>
                                     <td>{donor.firstName}</td>
