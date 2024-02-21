@@ -8,10 +8,11 @@ import { DonorDashboard } from "./components/Donor/DonorDashboard";
 import EmployeeLoginFunction, { EmployeeLogin } from "./components/Employee/EmployeeLogin";
 import { EmployeeDashboard } from "./components/Employee/EmployeeDashboard";
 import { EditDonorInfo } from "./components/Donor/EditDonorInfo";
-import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo"
-import { DonorList } from "./components/Employee/DonorList"
-import { BloodbankLocation } from "./components/Donor/BloodbankLocation"
-import Questionnaire from "./components/Donor/Questionnaire";
+import { EditEmployeeInfo } from "./components/Employee/EditEmployeeInfo";
+import { DonorList } from "./components/Employee/DonorList";
+import { BloodbankLocation } from "./components/Donor/BloodbankLocation";
+import { DonationHistory } from "./components/Employee/DonationHistory";
+import { AddDonation } from "./components/Employee/AddDonation"
 
 const AppRoutes = [
     {
@@ -67,8 +68,12 @@ const AppRoutes = [
         element: <BloodbankLocation />
     },
     {
-        path: '/questionnaire',
-        element: <Questionnaire />
+        path: '/donation-history',
+        element: <DonationHistory />
+    },
+    {
+        path: '/donation-history/add-donation',
+        element: <AddDonation/>
     }
 ];
 

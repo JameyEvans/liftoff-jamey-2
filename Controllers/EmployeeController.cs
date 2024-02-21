@@ -2,6 +2,7 @@
 using BloodBankManagmemntSystem.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Metadata;
+using System.Diagnostics;
 using System.Net;
 using static BloodBankManagmemntSystem.Controllers.DonorController;
 
@@ -88,6 +89,13 @@ namespace BloodBankManagmemntSystem.Controllers
         {
             List<Donor> fullDonorList = context.Donors.ToList();
             return Ok(fullDonorList);
+        }
+
+        [HttpGet("GetEmployeeList")]
+        public IActionResult GetEmployeeList()
+        {
+            List<Employee> employeeList = context.Employees.ToList();
+            return Ok(employeeList);
         }
 
         [HttpGet("SearchDonorList")]
